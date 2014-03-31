@@ -9,39 +9,14 @@ bash "init git" do
   not_if "ls -a /vagrant | grep .git$"
 end
 
-# Install .gitignore 
-bash "configure gitignore" do
-  user "vagrant"
-  code <<-EOH
-    cd /vagrant
-    echo ".DS_Store\n.vagrant" >> .gitignore
-  EOH
-  not_if "ls -a /vagrant | grep .gitignore"
-end
-
-# Backup existing post-merge hook 
-bash "configure gitignore" do
-  user "vagrant"
-  code <<-EOH
-    cd /vagrant/.git/hooks
-    if ls | grep 'post-merge'; then mv post-merge post-merge.bak; fi
-  EOH
-  not_if "ls /vagrant/.git/hooks | grep 'post-merge.bak'"
-end
-
-# insatll post-merge hook
+# docs @ http://docs.opscode.com/resource_cookbook_file.html
+# insatll post-merge hook, make vagrant its owner, make it executable
 cookbook_file "post-merge" do
+  owner "vagrant"
+  group "vagrant"
+  mode 0744
   path "/vagrant/.git/hooks/post-merge"
-  action :create_if_missing
-end
-
-# Make post-merge hook executable 
-bash "configure gitignore" do
-  user "vagrant"
-  code <<-EOH
-    cd /vagrant/.git/hooks
-    chmod u+x post-merge
-  EOH
+  action :create
 end
 
 # Configure Git

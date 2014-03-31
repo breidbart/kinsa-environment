@@ -20,13 +20,3 @@ python_virtualenv "/home/vagrant/.virtualenvs/djangoproj" do
   action :create
   not_if "ls /home/vagrant/.virtualenvs | grep 'djangoproj'"
 end
-
-#bash "configure virtualenvwrapper" do
-#  user "vagrant"
-#  code <<-EOH
-#    echo "export WORKON_HOME=/home/vagrant/.virtualenvs" >> /home/vagrant/.profile
-#    echo "source /usr/local/bin/virtualenvwrapper.sh" >> /home/vagrant/.profile
-#    echo "workon djangoproj" >> /home/vagrant/.profile
-#  EOH
-#  not_if "cat /home/vagrant/.profile | grep /home/vagrant/.virtualenvs"
-#end

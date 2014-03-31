@@ -11,10 +11,12 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+# VirtualenvWrapper Config
 export WORKON_HOME=/home/vagrant/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 workon djangoproj
 
+# Aliases
 alias cw='compass watch myproject/static_media/stylesheets'
 alias sh='python manage.py shell'
 alias rs='python manage.py runserver [::]:8000'

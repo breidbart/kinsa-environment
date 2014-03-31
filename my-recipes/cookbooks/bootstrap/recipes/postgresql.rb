@@ -7,3 +7,20 @@ bash "create database" do
   EOH
   not_if "sudo -u postgres psql -l | grep django_db"
 end
+
+# Set Database permissions
+# Gets around FATAL: Ident authentication failed for user “django_login” 
+# Create Bash Aliases, append custom colors
+cookbook_file "pg_hba.conf" do
+  owner "postgres"
+  group "postgres"
+  path "/etc/postgresql/9.1/main/pg_hba.conf"
+  action :create
+end
+
+bash "restart postgresql" do
+    user "root"
+    code <<-EOH
+        /etc/init.d/postgresql restart
+    EOH
+end

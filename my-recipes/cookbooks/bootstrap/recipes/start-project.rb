@@ -15,9 +15,9 @@ end
 bash "set virtualenv postactivate and deactivate hooks" do
   user "vagrant"
   code <<-EOH
+    source /home/vagrant/.virtualenvs/djangoproj/bin/activate
     echo "export DJANGO_SETTINGS_MODULE=myproject.settings.development" >> $VIRTUAL_ENV/bin/postactivate
     echo "unset DJANGO_SETTINGS_MODULE" >> $VIRTUAL_ENV/bin/postdeactivate
-    echo "cd /vagrant/myproject" >> /home/vagrant/.profile
   EOH
-  not_if "ls /home/vagrant/.profile | grep 'cd /vagrant/myproject'"
+  not_if "ls $VIRTUAL_ENV/bin | grep 'postdeactivate'"
 end
