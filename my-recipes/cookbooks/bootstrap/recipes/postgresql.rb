@@ -1,11 +1,9 @@
-postgresql_database 'django_db' do
-  connection(
-    :host     => '127.0.0.1',
-    :port     => 5432,
-    :username => 'django_login',
-    :password => 'secret'  # hashed: 53f48b7c4b76a86ce72276c5755f217d
-  )
-  template 'template0'
-  encoding 'UTF8'
-  action :create
+# Create the Database
+bash "create database" do
+  user "vagrant"
+  code <<-EOH
+    echo "CREATE USER django_login WITH SUPERUSER PASSWORD 'secret';" | sudo -u postgres psql
+    sudo -u postgres createdb -O django_login -E UTF8 --lc-ctype=en_US.utf8 --lc-collate=en_US.utf8 -T template0 django_db
+  EOH
+  not_if "sudo -u postgres psql -l | grep django_db"
 end
