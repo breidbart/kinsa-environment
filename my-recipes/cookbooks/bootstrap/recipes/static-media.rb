@@ -15,6 +15,8 @@ bash "configure static media" do
     cd ..
     rm -rf jbergantine* master.tar.gz
     touch /vagrant/myproject/myproject/static_media/stylesheets/sass/ie.sass
+    cd /vagrant/myproject
+    compass compile myproject/static_media/stylesheets --force
     cd /vagrant/myproject/myproject/static_media/javascripts/libs
     wget http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js -O jquery.js
   EOH

@@ -49,10 +49,6 @@ Sync the database and migrate any migrations.
     (vm) $ dj syncdb
     (vm) $ dj migrate
 
-Force compile the stylesheets (first time only).
-
-    (vm) $ compass compile myproject/static_media/stylesheets --force
-
 ## Smoke Test
 
     (vm) $ frs
