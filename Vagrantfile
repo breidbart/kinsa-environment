@@ -76,10 +76,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       :postgresql => {
         :version  => '9.1',
         :listen_address => '*',
-        :hba => [
-          { :type => 'local', :db => 'all', :user => 'all', :addr => nil, :method => 'md5' },
-          { :type => 'local', :db => 'django_db', :user => 'django_login', :addr => nil, :method => 'md5' },
-        ],
         :password => {
           :postgres => 'md5d4dd6397cf55a4507874c3864f092a8c'  # hashed value of iloverandompasswordsbutthiswilldo
         }
