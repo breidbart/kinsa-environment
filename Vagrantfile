@@ -44,7 +44,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # git 
     chef.add_recipe "git"
 
-    # python, python-dev plus pip and virtualenv
+    # python, pip, and virtualenv
     chef.add_recipe "python"
     chef.add_recipe "python::pip"
     chef.add_recipe "python::virtualenv"
@@ -57,8 +57,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # tie it all together
     chef.add_recipe "bootstrap"
 
-    # Assign the password 'thisisapassword' to psql user 'postgres'
-    # Setup memcached
     chef.json = { 
       :authorization => {
         :sudo => {
