@@ -32,13 +32,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "apt"
     chef.add_recipe "build-essential"
 
-    # openssl is a requirement for postgresql
-    chef.add_recipe "openssl"
+    chef.add_recipe "sudo"
 
     # postgresql database server
     chef.add_recipe "postgresql::client"
     chef.add_recipe "postgresql::server"
-    chef.add_recipe "database::postgresql"
 
     # git 
     chef.add_recipe "git"
@@ -66,6 +64,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Assign the password 'thisisapassword' to psql user 'postgres'
     # Setup memcached
     chef.json = { 
+      :authorization => {
+        :sudo => {
+          :users => [ "vagrant" ],
+          :passwordless => "true"
+        }
+      },
       :postgresql => {
         :version  => '9.1',
         :listen_address => '*',

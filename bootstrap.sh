@@ -13,13 +13,12 @@ mkdir -p ./my-recipes/cookbooks/apt && curl -L https://github.com/opscode-cookbo
 # It looks like you could also change the version of Chef that Vagrant uses
 # http://stackoverflow.com/questions/11325479/how-to-control-the-version-of-chef-that-vagrant-uses-to-provision-vms
 mkdir -p ./my-recipes/cookbooks/build-essential && curl -L https://github.com/opscode-cookbooks/build-essential/archive/v1.4.4.tar.gz | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/build-essential
-
-# Open SSL
-mkdir -p ./my-recipes/cookbooks/openssl && curl -L https://github.com/opscode-cookbooks/openssl/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/openssl
+ 
+# sudo
+mkdir -p ./my-recipes/cookbooks/sudo && curl -L https://github.com/opscode-cookbooks/sudo/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/sudo
 
 # PostgreSQL
 mkdir -p ./my-recipes/cookbooks/postgresql && curl -L https://github.com/opscode-cookbooks/postgresql/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/postgresql
-mkdir -p ./my-recipes/cookbooks/database && curl -L https://github.com/opscode-cookbooks/database/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/database
 
 # Git
 mkdir -p ./my-recipes/cookbooks/git && curl -L https://github.com/opscode-cookbooks/git/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/git
