@@ -67,6 +67,6 @@ This project makes your [host machine's SSH key available on the virtual machine
 
 For this to work you need to have working SSH private / public keys on your host computer. [GitHub has a tutorial deliniating the process of creating these keys.](https://help.github.com/articles/generating-ssh-keys)
 
-## Full Documentation
+## Co-Dependencies
 
 This project uses [django-newproj-template](https://github.com/jbergantine/django-newproj-template) and the [Gesso](https://github.com/jbergantine/compass-gesso) frontend framework.
