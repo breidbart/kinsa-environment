@@ -16,6 +16,9 @@ mkdir -p ./my-recipes/cookbooks/build-essential && curl -L https://github.com/op
  
 # sudo
 mkdir -p ./my-recipes/cookbooks/sudo && curl -L https://github.com/opscode-cookbooks/sudo/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/sudo
+ 
+# Open SSL
+mkdir -p ./my-recipes/cookbooks/openssl && curl -L https://github.com/opscode-cookbooks/openssl/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/openssl
 
 # PostgreSQL
 mkdir -p ./my-recipes/cookbooks/postgresql && curl -L https://github.com/opscode-cookbooks/postgresql/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/postgresql
