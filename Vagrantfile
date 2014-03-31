@@ -33,6 +33,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "build-essential"
 
     chef.add_recipe "sudo"
+ 
+    # openssl is a requirement for postgresql
+    chef.add_recipe "openssl"
 
     # postgresql database server
     chef.add_recipe "postgresql::client"
