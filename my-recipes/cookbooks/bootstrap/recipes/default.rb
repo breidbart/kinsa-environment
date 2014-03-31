@@ -8,7 +8,6 @@
 
 include_recipe "bootstrap::virtualenv"
 include_recipe "bootstrap::bash"
-include_recipe "bootstrap::symlink-xapian"
 include_recipe "bootstrap::symlink-pil"
 include_recipe "bootstrap::postgresql"
 include_recipe "bootstrap::rubygems"

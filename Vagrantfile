@@ -55,14 +55,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "libfreetype"
 
     # tie it all together
-    chef.add_recipe "bootstrap::virtualenv"
-    chef.add_recipe "bootstrap::bash"
-    chef.add_recipe "bootstrap::symlink-pil"
-    chef.add_recipe "bootstrap::postgresql"
-    chef.add_recipe "bootstrap::rubygems"
-    chef.add_recipe "bootstrap::start-project"
-    chef.add_recipe "bootstrap::init-git"
-    chef.add_recipe "bootstrap::static-media"
+    chef.add_recipe "bootstrap"
 
     # Assign the password 'thisisapassword' to psql user 'postgres'
     # Setup memcached
