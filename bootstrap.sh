@@ -19,7 +19,7 @@ mkdir -p ./my-recipes/cookbooks/postgresql && curl -L https://github.com/opscode
 mkdir -p ./my-recipes/cookbooks/git && curl -L https://github.com/opscode-cookbooks/git/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/git
 
 # Python
-mkdir -p ./my-recipes/cookbooks/python && curl -L https://github.com/comandrei/python/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/python
+mkdir -p ./my-recipes/cookbooks/python && curl -L https://github.com/poise/python/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/python
 
 # zlib
 mkdir -p ./my-recipes/cookbooks/zlib && curl -L https://github.com/opscode-cookbooks/zlib/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/zlib

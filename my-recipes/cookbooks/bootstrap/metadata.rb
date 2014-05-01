@@ -4,7 +4,7 @@ depends "sudo"
 depends "openssl"
 depends "postgresql"
 depends "git"
-depends "python" # https://github.com/comandrei/python/
+depends "python"
 depends "zlib"
 
 license 'BSD'
