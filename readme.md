@@ -53,3 +53,24 @@ SSH in to the Virtual Machine.
 This project makes your [host machine's SSH key available on the virtual machine](http://docs.vagrantup.com/v2/vagrantfile/ssh_settings.html) so you can use the SSH keys from your host computer on your virtual machine to SSH in to GitHub, BitBucket or your server.
 
 For this to work you need to have working SSH private / public keys on your host computer. [GitHub has a tutorial deliniating the process of creating these keys.](https://help.github.com/articles/generating-ssh-keys)
+
+# Django
+
+This project installs a new Django project from the template at [https://github.com/jbergantine/django-newproj-template](). There's a few things to do the first time through to get it all setup.
+
+Install the project-specific packages.
+
+    (vm) $ sudo pip install -r requirements/development.txt
+
+Sync the database and migrate any migrations.
+
+    (vm) $ dj syncdb
+    (vm) $ dj migrate
+
+Smoke test.
+
+    (vm) $ frs
+
+`frs` is an alias to `foreman start -f Procfile.dev` which contains a directive to execute `python manage.py runserver [::]:8000` as well as `compass watch myproject/static_media/stylesheets`.
+
+Open a Web browser on your host workstation and navigate to [http://localhost:8000](). You should see the `home.html` template rendered.
