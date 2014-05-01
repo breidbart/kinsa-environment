@@ -34,7 +34,7 @@ For example, to create a project called 'webapp' in your home directory:
 
     (host) $ mkdir ~/webapp && cd $_
 
-When you're all done, this directory will match up with `/vagrant/` in the virtual environment. VirtualBox keeps the two directories in sync so changes to one will be made in the other. 
+When you're all done, this directory will match up with `/vagrant/` in the virtual environment. Vagrant keeps the two directories in sync so changes to one will be made in the other. 
 
 Clone this repo.
     
