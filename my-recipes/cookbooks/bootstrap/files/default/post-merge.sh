@@ -6,9 +6,11 @@ fi
 
 compass compile /vagrant/myproject/myproject/static_media/stylesheets -e production --force
 
-$VIRTUAL_ENV/bin/python /vagrant/myproject/manage.py syncdb
+$VIRTUAL_ENV/bin/python /vagrant/myproject/manage.py syncdb --no-initial-data
 
-$VIRTUAL_ENV/bin/python /vagrant/myproject/manage.py migrate
+$VIRTUAL_ENV/bin/python /vagrant/myproject/manage.py migrate --no-initial-data
+
+$VIRTUAL_ENV/bin/python /vagrant/myproject/manage.py loaddata initial_data
 
 if [ $(cat /vagrant/myproject/requirements/development.txt | grep 'haystack' -c) -ne 0 ]
 then 
