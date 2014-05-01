@@ -39,4 +39,11 @@ bash "create (as necessary) and update procfile" do
   EOH
   not_if "cat /vagrant/myproject/Procfile.dev | grep 'compass'"
 end
-  
+
+bash "add alias to bash profile for compass watch" do
+  user "vagrant"
+  code <<-EOH
+    echo "alias cw='compass watch myproject/static_media/stylesheets'" >> /home/vagrant/.bash_profile
+  EOH
+  not_if "cat /home/vagrant/.bash_profile | grep \"alias cw='compass watch myproject/static_media/stylesheets'\""
+end

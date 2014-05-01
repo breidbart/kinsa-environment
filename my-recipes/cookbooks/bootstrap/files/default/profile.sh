@@ -15,12 +15,11 @@ fi
 export WORKON_HOME=/home/vagrant/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 workon djangoproj
+cd /vagrant/myproject
 
 # Aliases
-alias cw='compass watch myproject/static_media/stylesheets'
 alias sh='python manage.py shell'
 alias rs='python manage.py runserver [::]:8000'
-alias rsp='python manage.py runserver_plus [::]:8000'
 alias dj='python manage.py'
 alias py='python'
 alias pyclean='find . -name \"*.pyc\" -delete'
@@ -33,60 +32,67 @@ alias gst='git status'
 alias gss='git status -s'
 alias frs='foreman start -f Procfile.dev'
 
-# Configure colors, if available.
-if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-    c_reset='\[\e[0m\]'
-    c_user='\[\e[0;32m\]'
-    c_path='\[\e[1;34m\]'
-    c_git_clean='\[\e[0;37m\]'
-    c_git_staged='\[\e[0;32m\]'
-    c_git_unstaged='\[\e[0;31m\]'
-else
-    c_reset=
-    c_user=
-    c_path=
-    c_git_clean=
-    c_git_staged=
-    c_git_unstaged=
-fi
-
-# Add the title bar information when it is supported.
-case $TERM in
-xterm*|rxvt*)
-    TITLEBAR='\[\e]0;\u@\h: \w\a\]';
-    ;;
-*)
-    TITLEBAR="";
-    ;;
-esac
+# Configure colors
+c_reset="\[\e[0m\]" # no color
+c_user="\[\e[38;5;198m\]" # pink
+c_path="\[\e[38;5;239m\]" # gray
+c_git_clean="\[\e[38;5;251m\]" # light gray
+c_git_staged="\[\e[38;5;64m\]" # green
+c_git_unstaged="\[\e[38;5;124m\]" # red
+c_virtualenv="\[\e[38;5;202m\]"
 
 # Function to assemble the Git parsing part of our prompt.
-git_prompt ()
-{
-    GIT_DIR=`git rev-parse --git-dir 2>/dev/null`
-    if [ -z "$GIT_DIR" ]; then
-        return 0
-    fi
-    GIT_HEAD=`cat $GIT_DIR/HEAD`
-    GIT_BRANCH=${GIT_HEAD##*/}
-    if [ ${#GIT_BRANCH} -eq 40 ]; then
-        GIT_BRANCH="(no branch)"
-    fi
-    STATUS=`git status --porcelain`
-    if [ -z "$STATUS" ]; then
-        git_color="${c_git_clean}"
+git_prompt () {
+  GIT_DIR=`git rev-parse --git-dir 2>/dev/null`
+
+  # Check to see if there is a Git repo in the directory
+  # If not, set the GIT_INFO variable to empty and return
+  if [ -z "$GIT_DIR" ]; then
+    GIT_INFO=
+    return 0
+  fi
+
+  GIT_HEAD=`cat $GIT_DIR/HEAD`
+  GIT_BRANCH=${GIT_HEAD##*/}
+  
+  if [ ${#GIT_BRANCH} -eq 40 ]; then
+      GIT_BRANCH="(no branch)"
+  fi
+  
+  STATUS=`git status --porcelain`
+  
+  if [ -z "$STATUS" ]; then
+      git_color="${c_git_clean}"
+  else
+    echo -e "$STATUS" | grep -q '^ [A-Z\?]'
+    if [ $? -eq 0 ]; then
+      git_color="${c_git_unstaged}"
     else
-        echo -e "$STATUS" | grep -q '^ [A-Z\?]'
-        if [ $? -eq 0 ]; then
-            git_color="${c_git_unstaged}"
-        else
-            git_color="${c_git_staged}"
-        fi
+      git_color="${c_git_staged}"
     fi
-    echo "[$git_color$GIT_BRANCH$c_reset]"
+  fi
+  
+  GIT_INFO="$git_color$GIT_BRANCH$c_reset "
 }
 
-# Thy holy prompt.
-PROMPT_COMMAND="$PROMPT_COMMAND PS1=\"${TITLEBAR}(`basename ${VIRTUAL_ENV}`)${c_user}\u${c_reset}@${c_user}\h${c_reset}:${c_path}\w${c_reset}\$(git_prompt)\$ \" ;"
+function set_virtualenv () {
+  if [ -z "$VIRTUAL_ENV" ]; then
+    PYTHON_VIRTUALENV=
+  else
+    PYTHON_VIRTUALENV="${c_virtualenv}`basename \"$VIRTUAL_ENV\"`${c_reset} "
+  fi
+}
 
-cd /vagrant/myproject
+function set_bash_prompt () {
+  # Set the GIT_INFO variable
+  git_prompt
+
+  # Set the PYTHON_VIRTUALENV variable.
+  set_virtualenv
+ 
+  # Set the bash prompt variable.
+  PS1="${c_user}\u${c_reset} ${PYTHON_VIRTUALENV}${GIT_INFO}${c_path}\w${c_reset}$ "
+}
+
+# Tell bash to execute this function just before displaying its prompt.
+PROMPT_COMMAND=set_bash_prompt
