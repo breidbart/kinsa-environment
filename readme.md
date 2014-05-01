@@ -200,15 +200,13 @@ The following bash aliases are added to the shell.
     <tr>
         <th>$ rs</th>
         <td>
-            <pre>python manage.py runserver_plus [::]:8000</pre>
-            <p>Instigates django-extension's <a href="https://github.com/django-extensions/django-extensions/blob/master/docs/runserver_plus.rst">RunServerPlus</a> command with proper port forwarding. In a host the site will now be available at http://127.0.0.1:8000.</p>
+            <pre>python manage.py runserver [::]:8000</pre>
         </td>
     </tr>
     <tr>
         <th>$ sh</th>
         <td>
-            <pre>python manage.py shell_plus --use-bpython</pre>
-            <p>Launch django-extension's <a href="https://github.com/django-extensions/django-extensions/blob/master/docs/shell_plus.rst">ShellPlus</a> command with bpython syntax highlighting.</p>
+            <pre>python manage.py shell</pre>
         </td>
     </tr>
     <tr>
