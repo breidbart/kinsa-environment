@@ -1,5 +1,5 @@
 depends "apt"
-depends "build-essential", "= 1.4.4"
+depends "build-essential"
 depends "sudo"
 depends "openssl"
 depends "postgresql"

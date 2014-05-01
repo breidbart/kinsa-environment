@@ -12,6 +12,10 @@ Launch a Terminal window, check that it installed:
 
     (host) $ which vagrant
 
+Install the [_vagrant-omnibus_ plugin](https://github.com/schisamo/vagrant-omnibus). This ensures the desired version of Chef is installed.
+
+    $ vagrant plugin install vagrant-omnibus
+
 Add a Vagrant box (we'll be using Ubuntu Trusty Tahr (14.04 LTS) 64-bit):
 
     (host) $ vagrant box add trusty64 https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box 
