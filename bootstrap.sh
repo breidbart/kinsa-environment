@@ -1,18 +1,10 @@
 #!/bin/bash
  
-# Create a directory for Chef Recipes and Cookbooks
-mkdir -p ./my-recipes/cookbooks
- 
-# Download cookbooks
-
 # apt
 mkdir -p ./my-recipes/cookbooks/apt && curl -L https://github.com/opscode-cookbooks/apt/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/apt
 
-# Build Essentials < 2.0 since Vagrant doesn't seem to be using Chef 11
-# https://tickets.opscode.com/browse/COOK-4441?page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel
-# It looks like you could also change the version of Chef that Vagrant uses
-# http://stackoverflow.com/questions/11325479/how-to-control-the-version-of-chef-that-vagrant-uses-to-provision-vms
-mkdir -p ./my-recipes/cookbooks/build-essential && curl -L https://github.com/opscode-cookbooks/build-essential/archive/v1.4.4.tar.gz | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/build-essential
+# build essential
+mkdir -p ./my-recipes/cookbooks/build-essential && curl -L https://github.com/opscode-cookbooks/build-essential/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/build-essential
  
 # sudo
 mkdir -p ./my-recipes/cookbooks/sudo && curl -L https://github.com/opscode-cookbooks/sudo/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/sudo

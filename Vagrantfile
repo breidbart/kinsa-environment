@@ -4,15 +4,17 @@
 VAGRANTFILE_API_VERSION = "2"
  
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.omnibus.chef_version = :latest
+  
   config.ssh.private_key_path = ['~/.vagrant.d/insecure_private_key', '~/.ssh/id_rsa']
   config.ssh.forward_agent = true
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "precise64"
+  config.vm.box = "trusty64"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+  config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
 
   # To access our website, we can open a web browser on our workstation 
   # and go to http://localhost:8001. 
@@ -21,6 +23,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # LiveReload listens on port 35729.
   # http://feedback.livereload.com/knowledgebase/articles/195869-how-to-change-the-port-number-livereload-listens-o
   config.vm.network "forwarded_port", guest: 35729, host: 35729
+
+  config.vm.provision :shell, :inline => 'bash boostrap.sh'
 
   # Enable provisioning with chef solo, specifying a cookbooks path 
   # (relative to this Vagrantfile), and adding some recipes and/or 

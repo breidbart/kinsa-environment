@@ -12,9 +12,9 @@ Launch a Terminal window, check that it installed:
 
     (host) $ which vagrant
 
-Add a Vagrant box (we'll be using Ubuntu Precise Pangolin (12.04 LTS) 64-bit):
+Add a Vagrant box (we'll be using Ubuntu Trusty Tahr (14.04 LTS) 64-bit):
 
-    (host) $ vagrant box add precise64 http://files.vagrantup.com/precise64.box
+    (host) $ vagrant box add trusty64 https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box 
 
 # Using Vagrant with This Project
 
