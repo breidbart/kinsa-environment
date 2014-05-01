@@ -74,3 +74,226 @@ Smoke test.
 `frs` is an alias to `foreman start -f Procfile.dev` which contains a directive to execute `python manage.py runserver [::]:8000` as well as `compass watch myproject/static_media/stylesheets`.
 
 Open a Web browser on your host workstation and navigate to [http://localhost:8000](). You should see the `home.html` template rendered.
+
+# Cheat Sheets
+
+## Vagrant command tips
+
+### To exit the VM and return to your host machine:
+
+    (vm) $ exit
+
+### To shutdown the VM:
+
+    (host) $ vagrant halt
+
+### To suspend the VM (i.e. freeze the VM's state):
+
+    (host) $ vagrant suspend
+
+### Once shutdown or suspended, a VM can be restarted. To boot a VM:
+
+    (host) $ vagrant up
+
+### SSH into a VM (VM must [first be booted](#once-shutdown-or-suspended-a-vm-can-be-restarted)):
+
+    (host) $ vagrant ssh
+
+### To destroy the VM:
+
+    (host) $ vagrant destroy
+
+### To check if the VM is currently running:
+
+    (host) $ vagrant status
+
+### To re-run the provisioning after the VM has been started (if you have built the VM from scratch):
+
+    (host) $ vagrant provision
+
+More information is available in the [Vagrant documentation](http://vagrantup.com/v1/docs/index.html).
+
+## VirtualenvWrapper Command Tips
+
+Replacing `<virtualenv_name>` with the name of the virtual environement (IE: `djangoproj`).
+
+### To make a virtual environment:
+
+    (vm) $ mkvirtualenv <virtualenv_name>
+
+### To activate a virtual environment:
+
+    (vm) $ workon <virtualenv_name>
+   
+### To deactivate a virtual environment:
+
+    (vm) $ deactivate
+
+### To remove a virtual environment (warning this will delete the environment and any files therein):
+
+    (vm) rmvirtualenv <virtualenv_name>
+
+## PIP Command Tips
+
+### List intalled packages
+
+    (vm) $ pip freeze
+
+The output of this command can be routed to a file as in:
+
+    (vm) $ pip freeze > <path_to_file>
+
+As in:
+
+    (vm) $ pip freeze > requirements.txt
+
+### Install a new package:
+ 
+    (vm) $ pip install <package_name>
+
+### Upgrade a package that is alrady installed:
+
+    (vm) $ pip install <package_name> --upgrade
+
+### Install a specific version of a package (where x.x.x is the version number):
+
+    (vm) $ pip install <package_name>==x.x.x
+
+### Install all the packages listed in a file:
+
+    (vm) pip install -r <path_to_file>
+
+As in:
+
+    (vm) $ pip install -r requirements.txt
+
+### Uninstall a package:
+
+    (vm) $ pip uninstall <package_name>
+
+# Bash Aliases
+
+The following bash aliases are added to the shell. 
+
+## Compass
+
+<table>
+    <tr>
+        <th>$ cw</th>
+        <td><pre>compass watch myproject/static_media/stylesheets</pre></td>
+    </tr>
+</table>
+
+## Django
+
+<table>
+    <tr>
+        <th>$ dj</th>
+        <td>
+            <pre>python manage.py</pre>
+            <p>Example usage, interact with the Django shell:</p>
+            <pre>dj shell</pre>
+        </td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <th>$ rs</th>
+        <td>
+            <pre>python manage.py runserver_plus [::]:8000</pre>
+            <p>Instigates django-extension's <a href="https://github.com/django-extensions/django-extensions/blob/master/docs/runserver_plus.rst">RunServerPlus</a> command with proper port forwarding. In a host the site will now be available at http://127.0.0.1:8000.</p>
+        </td>
+    </tr>
+    <tr>
+        <th>$ sh</th>
+        <td>
+            <pre>python manage.py shell_plus --use-bpython</pre>
+            <p>Launch django-extension's <a href="https://github.com/django-extensions/django-extensions/blob/master/docs/shell_plus.rst">ShellPlus</a> command with bpython syntax highlighting.</p>
+        </td>
+    </tr>
+    <tr>
+        <th>$ frs</th>
+        <td>
+            <pre>foreman start -f Procfile.dev</pre>
+            <p>Simutaniously starts <code>compass watch myproject/static_media/stylesheets</code> and <code>python manage.py runserver [::]:8000</code> so stylesheets can be compiled and the server run from the same SSH session without manually managing processes.</p>
+        </td>
+    </tr>
+</table>
+
+## Git
+
+<table>
+    <tr>
+        <th>$ git br</th>
+        <td><pre>git branch</pre></td>
+    </tr>
+    <tr>
+        <th>$ git ci</th>
+        <td><pre>git commit</pre></td>
+    </tr>
+    <tr>
+        <th>$ git co</th>
+        <td><pre>git checkout</pre></td>
+    </tr>
+    <tr>
+        <th>$ git last</th>
+        <td><pre>git log -1 HEAD</pre></td>
+    </tr>
+    <tr>
+        <th>$ git st</th>
+        <td><pre>git status</pre></td>
+    </tr>
+    <tr>
+        <th>$ git unstage</th>
+        <td><pre>git reset HEAD --</pre></td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <th>$ ga</th>
+        <td><pre>git add</pre></td>
+    </tr>
+    <tr>
+        <th>$ gb</th>
+        <td><pre>git branch</pre></td>
+    </tr>
+    <tr>
+        <th>$ gco</th>
+        <td><pre>git checkout</pre></td>
+    </tr>
+    <tr>
+        <th>$ gl</th>
+        <td><pre>git pull</pre></td>
+    </tr>
+    <tr>
+        <th>$ gp</th>
+        <td><pre>git push</pre></td>
+    </tr>
+    <tr>
+        <th>$ gst</th>
+        <td><pre>git status</pre></td>
+    </tr>
+    <tr>
+        <th>$ gss</th>
+        <td><pre>git status -s</pre></td>
+    </tr>
+</table>
+
+## Python
+
+<table>
+    <tr>
+        <th>$ py</th>
+        <td>
+            <pre>python</pre>
+            <p>Launches a Python interactive shell.</p>
+        </td>
+    </tr>
+    <tr>
+        <th>$ pyclean</th>
+        <td>
+            <pre>find . -name "*.pyc" -delete</pre>
+            <p>Removes all files ending in ".pyc".</p>
+        </td>
+    </tr>
+</table>
