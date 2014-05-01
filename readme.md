@@ -1,5 +1,7 @@
 This repository contains a Chef cookbook and bash script that will install all the tools we use to build Python webapps at Kinsa in a Vagrant virtual environment. It should help new developers to setup virtual boxes easily and get up to speed in no time.
 
+It should work well on a newer Apple Macintosh running OSX Mavericks.
+
 # Initial setup of Vagrant Base
 
 This step only ever needs to be done once. Once the box is installed on a system the remaining steps refer to that same box regardless of the project.
