@@ -16,8 +16,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # doesn't already exist on the user's system.
   config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
 
-  # To access our website, we can open a web browser on our workstation 
-  # and go to http://localhost:8001. 
+  # To access our website, we can open a Web browser on our host workstation 
+  # and go to http://localhost:8000. 
   config.vm.network "forwarded_port", guest: 8000, host: 8000
 
   # LiveReload listens on port 35729.
