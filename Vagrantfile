@@ -56,6 +56,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # git 
     chef.add_recipe "git"
+    chef.add_recipe "gitflow"
 
     # python, pip, and virtualenv
     chef.add_recipe "python"
