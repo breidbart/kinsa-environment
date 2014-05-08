@@ -12,10 +12,10 @@ end
 # docs @ http://docs.opscode.com/resource_cookbook_file.html
 # insatll post-merge hook, make vagrant its owner, make it executable
 cookbook_file "post-merge.sh" do
+  path "/vagrant/.git/hooks/post-merge"
   owner "vagrant"
   group "vagrant"
-  mode 0744
-  path "/vagrant/.git/hooks/post-merge"
+  mode "744"
   action :create
 end
 
