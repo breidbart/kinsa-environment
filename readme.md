@@ -42,6 +42,10 @@ Download this repo.
     
     (host) $ curl -L https://github.com/Kinsa/kinsa-environment/tarball/master | tar -xz --strip-components=1
 
+Run the bootstrap script to download the Chef cookbooks.
+
+    (host) $ bash bootstrap.sh
+
 Startup Vagrant and provision the Virtual Machine.
 
     (host) $ vagrant up

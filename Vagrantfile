@@ -5,8 +5,8 @@ VAGRANTFILE_API_VERSION = "2"
  
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.omnibus.chef_version = :latest
-  
-  config.ssh.private_key_path = ['~/.vagrant.d/insecure_private_key', '~/.ssh/id_rsa']
+
+  config.ssh.private_key_path = ["~/.vagrant.d/insecure_private_key", "~/.ssh/id_rsa"]
   config.ssh.forward_agent = true
 
   # Every Vagrant virtual environment requires a box to build off of.
@@ -33,12 +33,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #  v.vmx["numvcpus"] = "2"
   #end
 
-  config.vm.provision :shell, :inline => 'bash boostrap.sh'
-
   # Enable provisioning with chef solo, specifying a cookbooks path 
   # (relative to this Vagrantfile), and adding some recipes and/or 
   # roles.
   config.vm.provision :chef_solo do |chef|
+    chef.custom_config_path = "Vagrantfile.chef"
+
     chef.cookbooks_path = "./my-recipes/cookbooks"
 
     # compilers
@@ -51,7 +51,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "openssl"
 
     # postgresql database server
-    chef.add_recipe "postgresql::client"
     chef.add_recipe "postgresql::server"
 
     # git 
@@ -79,7 +78,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         }
       },
       :postgresql => {
-        :version  => '9.1',
+        :version  => '9.3',
         :listen_address => '*',
         :password => {
           :postgres => 'md5d4dd6397cf55a4507874c3864f092a8c'  # hashed value of iloverandompasswordsbutthiswilldo
