@@ -27,9 +27,6 @@ mkdir -p ./my-recipes/cookbooks/python && curl -L https://github.com/opscode-coo
 # zlib
 mkdir -p ./my-recipes/cookbooks/zlib && curl -L https://github.com/opscode-cookbooks/zlib/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/zlib
 
-# Python-Psycopg2
-mkdir -p ./my-recipes/cookbooks/python-psycopg2 && curl -L https://github.com/jbergantine/chef-cookbook-python-psycopg2/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/python-psycopg2
-
 # LibJpeg
 mkdir -p ./my-recipes/cookbooks/libjpeg && curl -L https://github.com/jbergantine/chef-cookbook-libjpeg/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/libjpeg
 
