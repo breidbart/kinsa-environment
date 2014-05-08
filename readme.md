@@ -74,10 +74,6 @@ For this to work you need to have working SSH private / public keys on your host
 
 This project installs a new Django project from the template at [https://github.com/jbergantine/django-newproj-template](). There's a few things to do the first time through to get it all setup.
 
-Install the project-specific packages.
-
-    (vm) $ sudo pip install -r requirements/base.txt
-
 Sync the database and migrate any migrations.
 
     (vm) $ dj syncdb
