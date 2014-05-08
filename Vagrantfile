@@ -59,8 +59,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     # python, pip, and virtualenv
     chef.add_recipe "python"
-    chef.add_recipe "python::pip"
-    chef.add_recipe "python::virtualenv"
 
     # zlib, libjpeg, and libfreetype are necessary for PIL
     chef.add_recipe "zlib"
