@@ -46,6 +46,12 @@ Run the bootstrap script to download the Chef cookbooks.
 
     (host) $ bash bootstrap.sh
 
+**WARNING**
+
+Right now things fail in two cookbooks: Git and Python.
+
+Open the `metadata.rb` file in each of those cookbooks and remove or comment out the `depends` lines. For some reason the Chef / Ubuntu combo (not sure which piece) used here thinks it needs things like `dmg` and `yum` which it doesn't since those are specific to other operating systems. Without removing those lines a failure will happen when you try to provision the VM.
+
 Startup Vagrant and provision the Virtual Machine.
 
     (host) $ vagrant up
@@ -70,7 +76,7 @@ This project installs a new Django project from the template at [https://github.
 
 Install the project-specific packages.
 
-    (vm) $ sudo pip install -r requirements/development.txt
+    (vm) $ sudo pip install -r requirements/base.txt
 
 Sync the database and migrate any migrations.
 
