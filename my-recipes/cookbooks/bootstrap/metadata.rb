@@ -1,10 +1,13 @@
 depends "apt"
 depends "build-essential"
-depends "sudo"
+depends "git"
+depends "gitflow"
+depends "libfreetype"
+depends "libjpeg"
 depends "openssl"
 depends "postgresql"
-depends "git"
 depends "python"
+depends "sudo"
 depends "zlib"
 
 license 'BSD'
