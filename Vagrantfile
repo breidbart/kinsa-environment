@@ -10,11 +10,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.forward_agent = true
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "trusty64"
+  config.vm.box = "chef/ubuntu-14.04"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
+
+  # This praticular box can be configured for either VMWare or VirtualBox.
+  config.vm.box_url = "https://vagrantcloud.com/chef/ubuntu-14.04"
 
   # To access our website, we can open a Web browser on our host workstation 
   # and go to http://localhost:8000. 
@@ -23,6 +25,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # LiveReload listens on port 35729.
   # http://feedback.livereload.com/knowledgebase/articles/195869-how-to-change-the-port-number-livereload-listens-o
   config.vm.network "forwarded_port", guest: 35729, host: 35729
+
+  # Optionally, configure the box
+  #config.vm.provider "vmware_fusion" do |v|
+  #  # https://docs.vagrantup.com/v2/vmware/configuration.html
+  #  v.vmx["memsize"] = "2048"
+  #  v.vmx["numvcpus"] = "2"
+  #end
 
   config.vm.provision :shell, :inline => 'bash boostrap.sh'
 

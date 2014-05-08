@@ -18,8 +18,11 @@ mkdir -p ./my-recipes/cookbooks/postgresql && curl -L https://github.com/opscode
 # Git
 mkdir -p ./my-recipes/cookbooks/git && curl -L https://github.com/opscode-cookbooks/git/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/git
 
+# Git Flow
+mkdir -p ./my-recipes/cookbooks/gitflow && curl -L https://github.com/jbergantine/chef-cookbook-gitflow/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/gitflow
+
 # Python
-mkdir -p ./my-recipes/cookbooks/python && curl -L https://github.com/poise/python/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/python
+mkdir -p ./my-recipes/cookbooks/python && curl -L https://github.com/opscode-cookbooks/python/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/python
 
 # zlib
 mkdir -p ./my-recipes/cookbooks/zlib && curl -L https://github.com/opscode-cookbooks/zlib/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/zlib

@@ -20,9 +20,11 @@ Install the [_vagrant-omnibus_ plugin](https://github.com/schisamo/vagrant-omnib
 
     (host) $ vagrant plugin install vagrant-omnibus
 
+Optionally, install the [_vagrant-vmware_ plugin](https://www.vagrantup.com/vmware) to use VMWare Fusion rather than VirtualBox. Click _Buy Now_ and follow the directions. The plugin requires VMWare Fusion or VMWare Fusion Professional separately. You will be prompted with directions to install the plugin and associate it with the license [during the installation](https://docs.vagrantup.com/v2/vmware/installation.html).
+
 Add a Vagrant box (we'll be using Ubuntu Trusty Tahr (14.04 LTS) 64-bit):
 
-    (host) $ vagrant box add trusty64 https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box 
+    (host) $ vagrant box add https://vagrantcloud.com/chef/ubuntu-14.04 
 
 # Starting a New Project
 
@@ -36,13 +38,17 @@ For example, to create a project called 'webapp' in your home directory:
 
 When you're all done, this directory will match up with `/vagrant/` in the virtual environment. Vagrant keeps the two directories in sync so changes to one will be made in the other. 
 
-Clone this repo.
+Download this repo.
     
-    (host) $ git clone git@github.com:Kinsa/kinsa-environment.git
+    (host) $ curl -L https://github.com/Kinsa/kinsa-environment/tarball/master | tar -xz --strip-components=1
 
 Startup Vagrant and provision the Virtual Machine.
 
     (host) $ vagrant up
+
+If using with VMWare, throw the `--provider` flag.
+
+    (host) $ vagrant up --provider=vmware_fusion
 
 SSH in to the Virtual Machine.
 
