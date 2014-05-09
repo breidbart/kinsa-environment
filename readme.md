@@ -8,9 +8,9 @@ This step only ever needs to be done once. Once the box is installed on a system
 
 On an Apple running OS X, download and install [Xcode from the Apple App Store](https://itunes.apple.com/us/app/xcode/id497799835?ls=1&mt=12). This is necessary to get some compilers and install Git on the host machine.
 
-Download VirtualBox from http://www.virtualbox.org/wiki/Downloads, install the package.
+Download [VirtualBox](http://www.virtualbox.org/wiki/Downloads) or [VMWare Fusion](http://www.vmware.com/products/fusion/) or [VMWare Fusion Professional](http://www.vmware.com/products/fusion-professional/), install the package.
 
-Download Vagrant 2 or higher from http://downloads.vagrantup.com/, install the package.
+[Download Vagrant 2](http://downloads.vagrantup.com/) or higher, install the package.
 
 Launch a Terminal window, check that it installed:
 
