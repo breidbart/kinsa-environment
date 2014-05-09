@@ -83,6 +83,10 @@ Sync the database and migrate any migrations.
     (vm) $ dj syncdb
     (vm) $ dj migrate
 
+Force compile the stylesheets.
+
+    (vm) $ compass compile myproject/static_media/stylesheets --force
+
 Smoke test.
 
     (vm) $ frs
@@ -90,6 +94,8 @@ Smoke test.
 `frs` is an alias to `foreman start -f Procfile.dev` which contains a directive to execute `python manage.py runserver [::]:8000` as well as `compass watch myproject/static_media/stylesheets`.
 
 Open a Web browser on your host workstation and navigate to [http://localhost:8000](). You should see the `home.html` template rendered.
+
+---
 
 # Cheat Sheets
 
