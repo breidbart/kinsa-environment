@@ -65,6 +65,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "libjpeg"
     chef.add_recipe "libfreetype"
 
+    # rbenv, ruby, rubygems
+    chef.add_recipe "ruby_build"
+    chef.add_recipe "rbenv::system"
+    chef.add_recipe "rbenv::vagrant"
+
     # tie it all together
     chef.add_recipe "bootstrap"
 
@@ -80,6 +85,25 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         :listen_address => '*',
         :password => {
           :postgres => 'md5d4dd6397cf55a4507874c3864f092a8c'  # hashed value of iloverandompasswordsbutthiswilldo
+        }
+      },
+      :rbenv => {
+        :global => '2.1.2',
+        :rubies => ['2.1.2'],
+        :gems => {
+          '2.1.2' => [
+            {
+              :name => 'compass',
+              :version => '0.12.4'
+            },
+            {
+              :name => 'susy',
+              :version => '1.0.9'
+            },
+            {
+              :name => 'foreman'
+            }
+          ]
         }
       }
     }

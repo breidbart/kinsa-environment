@@ -46,11 +46,15 @@ Run the bootstrap script to download the Chef cookbooks.
 
     (host) $ bash bootstrap.sh
 
+---
+
 **WARNING**
 
-Right now things fail in two cookbooks: Git and Python.
+Currently, installation will fail when attempting to install Git and Python.
 
-Open the `metadata.rb` file in each of those cookbooks and remove or comment out the `depends` lines. For some reason the Chef / Ubuntu combo (not sure which piece) used here thinks it needs things like `dmg` and `yum` which it doesn't since those are specific to other operating systems. Without removing those lines a failure will happen when you try to provision the VM.
+Open the `metadata.rb` file in each of those cookbooks and remove or comment out the dependencies except for `build_essential` which is the only requirement for the Debian/Ubuntu operating system. The others maybe should be listed as `recommends` or there may be some other issue at hand. Not sure at this time.
+
+---
 
 Startup Vagrant and provision the Virtual Machine.
 
