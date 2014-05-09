@@ -20,7 +20,7 @@ Install the [_vagrant-omnibus_ plugin](https://github.com/schisamo/vagrant-omnib
 
     (host) $ vagrant plugin install vagrant-omnibus
 
-Optionally, install the [_vagrant-vmware_ plugin](https://www.vagrantup.com/vmware) to use VMWare Fusion rather than VirtualBox. Click _Buy Now_ and follow the directions. The plugin requires VMWare Fusion or VMWare Fusion Professional separately. You will be prompted with directions to install the plugin and associate it with the license [during the installation](https://docs.vagrantup.com/v2/vmware/installation.html).
+Optionally, install the [_vagrant-vmware_ plugin](https://www.vagrantup.com/vmware) to use VMWare Fusion rather than VirtualBox. Click _Buy Now_ and follow the directions. The Vagrant VMWare plugin requires either VMWare Fusion or VMWare Fusion Professional. You will be prompted with directions to install the plugin and associate it with the license [during the installation](https://docs.vagrantup.com/v2/vmware/installation.html).
 
 Add a Vagrant box (we'll be using Ubuntu Trusty Tahr (14.04 LTS) 64-bit):
 
