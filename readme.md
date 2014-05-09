@@ -68,13 +68,13 @@ SSH in to the Virtual Machine.
 
     (host) $ vagrant ssh 
 
-# A Note About SSH Keys
+## A Note About SSH Keys
 
 This project makes your [host machine's SSH key available on the virtual machine](http://docs.vagrantup.com/v2/vagrantfile/ssh_settings.html) so you can use the SSH keys from your host computer on your virtual machine to SSH in to GitHub, BitBucket or your server.
 
 For this to work you need to have working SSH private / public keys on your host computer. [GitHub has a tutorial deliniating the process of creating these keys.](https://help.github.com/articles/generating-ssh-keys)
 
-# Django
+## Django
 
 This project installs a new Django project from the template at [https://github.com/jbergantine/django-newproj-template](). There's a few things to do the first time through to get it all setup.
 
