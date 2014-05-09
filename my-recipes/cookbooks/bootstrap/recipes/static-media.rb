@@ -25,9 +25,9 @@ end
 
 # insatll modernizr.js
 cookbook_file "modernizr.js" do
+  path "/vagrant/myproject/myproject/static_media/javascripts/libs/modernizr.js"
   owner "vagrant"
   group "vagrant"
-  path "/vagrant/myproject/myproject/static_media/javascripts/libs/modernizr.js"
   action :create_if_missing
 end
 

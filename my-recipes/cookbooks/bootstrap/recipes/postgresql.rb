@@ -14,7 +14,7 @@ end
 cookbook_file "pg_hba.conf" do
   owner "postgres"
   group "postgres"
-  path "/etc/postgresql/9.1/main/pg_hba.conf"
+  path "/etc/postgresql/9.3/main/pg_hba.conf"
   action :create
 end
 

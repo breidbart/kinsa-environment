@@ -46,6 +46,16 @@ Run the bootstrap script to download the Chef cookbooks.
 
     (host) $ bash bootstrap.sh
 
+---
+
+**WARNING**
+
+Currently, installation will fail when attempting to install Git and Python.
+
+Open the `metadata.rb` file in each of those cookbooks and remove or comment out the dependencies except for `build_essential` which is the only requirement for the Debian/Ubuntu operating system. The others maybe should be listed as `recommends` or there may be some other issue at hand. Not sure at this time.
+
+---
+
 Startup Vagrant and provision the Virtual Machine.
 
     (host) $ vagrant up
@@ -67,10 +77,6 @@ For this to work you need to have working SSH private / public keys on your host
 # Django
 
 This project installs a new Django project from the template at [https://github.com/jbergantine/django-newproj-template](). There's a few things to do the first time through to get it all setup.
-
-Install the project-specific packages.
-
-    (vm) $ sudo pip install -r requirements/development.txt
 
 Sync the database and migrate any migrations.
 

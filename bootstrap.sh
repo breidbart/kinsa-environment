@@ -32,3 +32,9 @@ mkdir -p ./my-recipes/cookbooks/libjpeg && curl -L https://github.com/jbergantin
 
 # LibFreeType
 mkdir -p ./my-recipes/cookbooks/libfreetype && curl -L https://github.com/jbergantine/chef-cookbook-libfreetype/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/libfreetype
+
+# ruby_build
+mkdir -p ./my-recipes/cookbooks/ruby_build && curl -L https://github.com/fnichol/chef-ruby_build/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/ruby_build
+
+# rbenv
+mkdir -p ./my-recipes/cookbooks/rbenv && curl -L https://github.com/fnichol/chef-rbenv/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/rbenv

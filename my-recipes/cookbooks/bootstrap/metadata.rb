@@ -7,6 +7,8 @@ depends "libjpeg"
 depends "openssl"
 depends "postgresql"
 depends "python"
+depends 'rbenv'
+depends 'ruby_build'
 depends "sudo"
 depends "zlib"
 
