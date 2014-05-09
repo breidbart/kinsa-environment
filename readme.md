@@ -222,13 +222,13 @@ The following bash aliases are added to the shell.
     <tr>
         <th>$ rs</th>
         <td>
-            <pre>python manage.py runserver [::]:8000</pre>
+            <pre>python manage.py runserver_plus [::]:8000</pre>
         </td>
     </tr>
     <tr>
         <th>$ sh</th>
         <td>
-            <pre>python manage.py shell</pre>
+            <pre>python manage.py shell_plus --bpython</pre>
         </td>
     </tr>
     <tr>
