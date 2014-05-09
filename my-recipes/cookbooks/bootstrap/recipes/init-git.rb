@@ -48,3 +48,12 @@ bash "add github.com to known hosts" do
   EOH
   not_if "ls /root | grep '.ssh'"
 end
+
+# Add bitbucket.org to /root/.ssh/known_hosts
+bash "add bitbucket.org to known hosts" do
+  user "root"
+  code <<-EOH
+    echo "mkdir -p /root/.ssh && touch /root/.ssh/known_hosts && ssh-keyscan -H 'bitbucket.org' >> /root/.ssh/known_hosts && chmod 600 /root/.ssh/known_hosts"
+  EOH
+  not_if "cat /root/.ssh/known_hosts | grep 'bitbucket'"
+end
