@@ -19,7 +19,7 @@ mkdir -p ./my-recipes/cookbooks/postgresql && curl -L https://github.com/opscode
 mkdir -p ./my-recipes/cookbooks/git && curl -L https://github.com/opscode-cookbooks/git/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/git
 
 # Git Flow
-mkdir -p ./my-recipes/cookbooks/gitflow && curl -L https://github.com/jbergantine/chef-cookbook-gitflow/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/gitflow
+mkdir -p ./my-recipes/cookbooks/gitflow && curl -L https://github.com/jbergantine/gitflow/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/gitflow
 
 # Python
 mkdir -p ./my-recipes/cookbooks/python && curl -L https://github.com/opscode-cookbooks/python/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/python
@@ -31,7 +31,7 @@ mkdir -p ./my-recipes/cookbooks/zlib && curl -L https://github.com/opscode-cookb
 mkdir -p ./my-recipes/cookbooks/libjpeg && curl -L https://github.com/jbergantine/chef-cookbook-libjpeg/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/libjpeg
 
 # LibFreeType
-mkdir -p ./my-recipes/cookbooks/libfreetype && curl -L https://github.com/jbergantine/chef-cookbook-libfreetype/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/libfreetype
+mkdir -p ./my-recipes/cookbooks/libfreetype && curl -L https://github.com/jbergantine/libfreetype/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/libfreetype
 
 # ruby_build
 mkdir -p ./my-recipes/cookbooks/ruby_build && curl -L https://github.com/fnichol/chef-ruby_build/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/ruby_build
