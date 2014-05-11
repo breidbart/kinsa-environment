@@ -28,7 +28,7 @@ mkdir -p ./my-recipes/cookbooks/python && curl -L https://github.com/opscode-coo
 mkdir -p ./my-recipes/cookbooks/zlib && curl -L https://github.com/opscode-cookbooks/zlib/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/zlib
 
 # LibJpeg
-mkdir -p ./my-recipes/cookbooks/libjpeg && curl -L https://github.com/jbergantine/chef-cookbook-libjpeg/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/libjpeg
+mkdir -p ./my-recipes/cookbooks/libjpeg && curl -L https://github.com/jbergantine/libjpeg/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/libjpeg
 
 # LibFreeType
 mkdir -p ./my-recipes/cookbooks/libfreetype && curl -L https://github.com/jbergantine/libfreetype/tarball/master | tar -xz --strip-components=1 --directory=./my-recipes/cookbooks/libfreetype
