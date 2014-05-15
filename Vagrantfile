@@ -27,10 +27,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "forwarded_port", guest: 35729, host: 35729
 
   # Optionally, configure the box
+  # VMWare
   #config.vm.provider "vmware_fusion" do |v|
   #  # https://docs.vagrantup.com/v2/vmware/configuration.html
   #  v.vmx["memsize"] = "2048"
-  #  v.vmx["numvcpus"] = "2"
+  #  v.vmx["numvcpus"] = "4"
+  #end
+
+  # VirtualBox
+  #config.vm.provider "virtualbox" do |v|
+  #  v.customize ["modifyvm", :id, "--vram", "16"]
+  #  v.memory = 2048
+  #  v.cpus = 4
   #end
 
   # Enable provisioning with chef solo, specifying a cookbooks path 
