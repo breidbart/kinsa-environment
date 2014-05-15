@@ -34,12 +34,14 @@ alias frs='foreman start -f Procfile.dev'
 
 # Configure colors
 c_reset="\[\e[0m\]" # no color
-c_user="\[\e[38;5;198m\]" # pink
+c_user="\[\e[38;5;66m\]" # teal
 c_path="\[\e[38;5;239m\]" # gray
 c_git_clean="\[\e[38;5;251m\]" # light gray
-c_git_staged="\[\e[38;5;64m\]" # green
+c_git_staged="\[\e[38;5;142m\]" # green
 c_git_unstaged="\[\e[38;5;124m\]" # red
-c_virtualenv="\[\e[38;5;202m\]"
+c_virtualenv="\[\e[38;5;136m\]"
+
+LS_COLORS='di=38;5;25:fi=38;5;248:ex=38;5;142:ln=38;5;198' ; export LS_COLORS
 
 # Function to assemble the Git parsing part of our prompt.
 git_prompt () {
