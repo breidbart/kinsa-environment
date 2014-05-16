@@ -87,6 +87,50 @@ Open a Web browser on your host workstation and navigate to [http://localhost:80
 
 ---
 
+# Directory Structure and Subprojects
+
+## Django Project
+
+The Django Project gets built into `/vagrant/myproject`.
+
+## Default Django Application
+
+The defualt application is also called `myproject` and resides at `/vagrant/myproject/myproject`.
+
+## HTML
+
+HTML Templates reside in `/vagrant/myproject/myproject/templates`.
+
+[See the Django Newproj Template README for additional documentation of the default application and included templates.](https://github.com/jbergantine/django-newproj-template).
+
+## Stylesheets
+
+SASS files reside in `/vagrant/myproject/myproject/static_media/stylesheets/sass` and get compiled via Compass to `/vagrant/myproject/myproject/static_media/stylesheets/stylesheets`.
+
+[See the Gesso SASS project README for additional documentation.](https://github.com/jbergantine/compass-gesso).
+
+This project relies on Compass and Susy 1.x responsive grids.
+
+[Compass documentation](http://compass-style.org/reference/compass/).
+
+[Susy One documentation](http://susydocs.oddbird.net/en/latest/susyone/).
+
+## Scripts
+
+JavaScript files reside in `/vagrant/myproject/myproject/static_media/javascripts`.
+
+This project relies on the latest verison of jQuery and a customzied version of Modernizr 2.6.2 with just [HTML5 shims](http://modernizr.com/download/#-shiv-cssclasses-load).
+
+[jQuery documentation](http://api.jquery.com).
+
+[Modernizr documentation](http://modernizr.com/docs/).
+
+## Images
+
+Images reside in `/vagrant/myproject/myproject/static_media/images`.
+
+---
+
 # Bash Aliases
 
 The following bash aliases are added to the shell. 
