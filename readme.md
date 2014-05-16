@@ -20,6 +20,10 @@ Install the [_vagrant-omnibus_ plugin](https://github.com/schisamo/vagrant-omnib
 
     (host) $ vagrant plugin install vagrant-omnibus
 
+Install the [_vagrant-berkshelf_ plugin](https://github.com/berkshelf/vagrant-berkshelf) to manage dependencies.
+
+    (host) $ vagrant plugin install vagrant-berkshelf --plugin-version '>= 2.0.1'
+
 Optionally, install the [_vagrant-vmware_ plugin](https://www.vagrantup.com/vmware) to use VMWare Fusion rather than VirtualBox. Click _Buy Now_ and follow the directions. The Vagrant VMWare plugin requires either VMWare Fusion or VMWare Fusion Professional. You will be prompted with directions to install the plugin and associate it with the license [during the installation](https://docs.vagrantup.com/v2/vmware/installation.html).
 
 Add a Vagrant box (we'll be using Ubuntu Trusty Tahr (14.04 LTS) 64-bit):
@@ -41,20 +45,6 @@ When you're all done, this directory will match up with `/vagrant/` in the virtu
 Download this repo.
     
     (host) $ curl -L https://github.com/Kinsa/kinsa-environment/tarball/master | tar -xz --strip-components=1
-
-Run the bootstrap script to download the Chef cookbooks.
-
-    (host) $ bash bootstrap.sh
-
----
-
-**WARNING**
-
-Currently, installation will fail when attempting to install Git and Python.
-
-Open the `metadata.rb` file in each of those cookbooks and remove or comment out the dependencies except for `build_essential` which is the only requirement for the Debian/Ubuntu operating system. The others maybe should be listed as `recommends` or there may be some other issue at hand. Not sure at this time.
-
----
 
 Startup Vagrant and provision the Virtual Machine.
 
