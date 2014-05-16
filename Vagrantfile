@@ -49,8 +49,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :chef_solo do |chef|
     chef.custom_config_path = "Vagrantfile.chef"
 
-    chef.cookbooks_path = "./my-recipes/cookbooks"
-
     chef.add_recipe "kinsa-bootstrap"
 
     chef.json = { 
