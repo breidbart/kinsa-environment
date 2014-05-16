@@ -111,9 +111,8 @@ SASS files reside in `/vagrant/myproject/myproject/static_media/stylesheets/sass
 
 This project relies on Compass and Susy 1.x responsive grids.
 
-[Compass documentation](http://compass-style.org/reference/compass/).
-
-[Susy One documentation](http://susydocs.oddbird.net/en/latest/susyone/).
+* [Compass documentation](http://compass-style.org/reference/compass/).
+* [Susy One documentation](http://susydocs.oddbird.net/en/latest/susyone/).
 
 ## Scripts
 
@@ -121,9 +120,8 @@ JavaScript files reside in `/vagrant/myproject/myproject/static_media/javascript
 
 This project relies on the latest verison of jQuery and a customzied version of Modernizr 2.6.2 with just [HTML5 shims](http://modernizr.com/download/#-shiv-cssclasses-load).
 
-[jQuery documentation](http://api.jquery.com).
-
-[Modernizr documentation](http://modernizr.com/docs/).
+* [jQuery documentation](http://api.jquery.com).
+* [Modernizr documentation](http://modernizr.com/docs/).
 
 ## Images
 
