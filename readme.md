@@ -87,61 +87,127 @@ Open a Web browser on your host workstation and navigate to [http://localhost:80
 
 ---
 
-# Cheat Sheets
+# Bash Aliases
 
-## Vagrant command tips
+The following bash aliases are added to the shell. 
 
-### To exit the VM and return to your host machine:
+## Compass
 
-    (vm) $ exit
+<table>
+    <tr>
+        <th>$ cw</th>
+        <td><pre>compass watch myproject/static_media/stylesheets</pre></td>
+    </tr>
+</table>
 
-### To shutdown the VM:
+## Django
 
-    (host) $ vagrant halt
+<table>
+    <tr>
+        <th>$ dj</th>
+        <td>
+            <pre>python manage.py</pre>
+            <p>Example usage, interact with the Django shell:</p>
+            <pre>dj shell</pre>
+        </td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <th>$ rs</th>
+        <td>
+            <pre>python manage.py runserver_plus [::]:8000</pre>
+        </td>
+    </tr>
+    <tr>
+        <th>$ sh</th>
+        <td>
+            <pre>python manage.py shell_plus --bpython</pre>
+        </td>
+    </tr>
+    <tr>
+        <th>$ frs</th>
+        <td>
+            <pre>foreman start -f Procfile.dev</pre>
+            <p>Simutaniously starts <code>compass watch myproject/static_media/stylesheets</code> and <code>python manage.py runserver [::]:8000</code> so stylesheets can be compiled and the server run from the same SSH session without manually managing processes.</p>
+        </td>
+    </tr>
+</table>
 
-### To suspend the VM (i.e. freeze the VM's state):
+## Git
 
-    (host) $ vagrant suspend
+<table>
+    <tr>
+        <th>$ git br</th>
+        <td><pre>git branch</pre></td>
+    </tr>
+    <tr>
+        <th>$ git ci</th>
+        <td><pre>git commit</pre></td>
+    </tr>
+    <tr>
+        <th>$ git co</th>
+        <td><pre>git checkout</pre></td>
+    </tr>
+    <tr>
+        <th>$ git last</th>
+        <td><pre>git log -1 HEAD</pre></td>
+    </tr>
+    <tr>
+        <th>$ git st</th>
+        <td><pre>git status</pre></td>
+    </tr>
+    <tr>
+        <th>$ git unstage</th>
+        <td><pre>git reset HEAD --</pre></td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <th>$ ga</th>
+        <td><pre>git add</pre></td>
+    </tr>
+    <tr>
+        <th>$ gb</th>
+        <td><pre>git branch</pre></td>
+    </tr>
+    <tr>
+        <th>$ gco</th>
+        <td><pre>git checkout</pre></td>
+    </tr>
+    <tr>
+        <th>$ gl</th>
+        <td><pre>git pull</pre></td>
+    </tr>
+    <tr>
+        <th>$ gp</th>
+        <td><pre>git push</pre></td>
+    </tr>
+    <tr>
+        <th>$ gst</th>
+        <td><pre>git status</pre></td>
+    </tr>
+    <tr>
+        <th>$ gss</th>
+        <td><pre>git status -s</pre></td>
+    </tr>
+</table>
 
-### Once shutdown or suspended, a VM can be restarted. To boot a VM:
+## Python
 
-    (host) $ vagrant up
-
-### SSH into a VM (VM must [first be booted](#once-shutdown-or-suspended-a-vm-can-be-restarted)):
-
-    (host) $ vagrant ssh
-
-### To destroy the VM:
-
-    (host) $ vagrant destroy
-
-### To check if the VM is currently running:
-
-    (host) $ vagrant status
-
-### To re-run the provisioning after the VM has been started (if you have built the VM from scratch):
-
-    (host) $ vagrant provision
-
-More information is available in the [Vagrant documentation](http://vagrantup.com/v1/docs/index.html).
-
-## VirtualenvWrapper Command Tips
-
-Replacing `<virtualenv_name>` with the name of the virtual environement (IE: `djangoproj`).
-
-### To make a virtual environment:
-
-    (vm) $ mkvirtualenv <virtualenv_name>
-
-### To activate a virtual environment:
-
-    (vm) $ workon <virtualenv_name>
-   
-### To deactivate a virtual environment:
-
-    (vm) $ deactivate
-
-### To remove a virtual environment (warning this will delete the environment and any files therein):
-
-    (vm) rmvirtualenv <virtualenv_name>
-
+<table>
+    <tr>
+        <th>$ py</th>
+        <td>
+            <pre>python</pre>
+            <p>Launches a Python interactive shell.</p>
+        </td>
+    </tr>
+    <tr>
+        <th>$ pyclean</th>
+        <td>
+            <pre>find . -name "*.pyc" -delete</pre>
+            <p>Removes all files ending in ".pyc".</p>
+        </td>
+    </tr>
+</table>
