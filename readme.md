@@ -20,7 +20,7 @@ Install the [_vagrant-omnibus_ plugin](https://github.com/schisamo/vagrant-omnib
 
     (host) $ vagrant plugin install vagrant-omnibus
 
-Install the [_vagrant-berkshelf_ plugin](https://github.com/berkshelf/vagrant-berkshelf) to manage dependencies.
+Install the [_vagrant-berkshelf_ plugin](https://github.com/berkshelf/vagrant-berkshelf) to manage Chef cookbooks.
 
     (host) $ vagrant plugin install vagrant-berkshelf --plugin-version '>= 2.0.1'
 
@@ -85,23 +85,33 @@ Smoke test.
 
 Open a Web browser on your host workstation and navigate to [http://localhost:8000](). You should see the `home.html` template rendered.
 
----
-
 # Directory Structure and Subprojects
+
+## Python
+
+Python 2.7, VirtualEnv, and VirtualEnvWrapper are installed and configured. 
+
+The Django Project is installed into a virtual environment named `djangoproj` which resides in `/home/vagrant/.virtualenvs`. The `djangoproj` virtual environment is activated by default for the `vagrant` user's Bash session.
+
+Certain packages are installed globally and the `djangoproj` virtual environment is configured to have access to global packages.
 
 ## Django Project
 
 The Django Project gets built into `/vagrant/myproject`.
 
+This is the starting directory for the `vagrant` users's Bash session.
+
 ## Default Django Application
 
 The defualt application is also called `myproject` and resides at `/vagrant/myproject/myproject`.
+
+See the [Django Newproj Template README](https://github.com/jbergantine/django-newproj-template). for additional documentation of the default application including additional Python packages installed, settings file names and locations, default database engine, etc.
 
 ## HTML
 
 HTML Templates reside in `/vagrant/myproject/myproject/templates`.
 
-[See the Django Newproj Template README for additional documentation of the default application and included templates.](https://github.com/jbergantine/django-newproj-template).
+[See the Django Newproj Template README for additional documentation of the included HTML templates.](https://github.com/jbergantine/django-newproj-template).
 
 ## Stylesheets
 
@@ -109,7 +119,7 @@ SASS files reside in `/vagrant/myproject/myproject/static_media/stylesheets/sass
 
 [See the Gesso SASS project README for additional documentation.](https://github.com/jbergantine/compass-gesso).
 
-This project relies on Compass and Susy 1.x responsive grids.
+This project relies on Compass and Susy 1.x.
 
 * [Compass documentation](http://compass-style.org/reference/compass/).
 * [Susy One documentation](http://susydocs.oddbird.net/en/latest/susyone/).
@@ -127,7 +137,9 @@ This project relies on the latest verison of jQuery and a customzied version of 
 
 Images reside in `/vagrant/myproject/myproject/static_media/images`.
 
----
+# Working Collaboratively
+
+The project uses an undocumented post-merge Git hook [(view the source code)](https://github.com/Kinsa/kinsa-bootstrap/blob/develop/files/default/post-merge.sh) to compile SASS files, install Python package dependancies, sync/migrate databases and load database fixtures when working collaboratively.
 
 # Bash Aliases
 
