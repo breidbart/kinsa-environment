@@ -93,13 +93,17 @@ Python 2.7, VirtualEnv, and VirtualEnvWrapper are installed and configured.
 
 The Django Project is installed into a virtual environment named `djangoproj` which resides in `/home/vagrant/.virtualenvs`. The `djangoproj` virtual environment is activated by default for the `vagrant` user's Bash session.
 
-Certain packages are installed globally and the `djangoproj` virtual environment is configured to have access to global packages.
+Certain packages are installed globally, and the `djangoproj` virtual environment is configured to have access to global packages.
 
 ## Django Project
 
 The Django Project gets built into `/vagrant/myproject`.
 
-This is the starting directory for the `vagrant` users's Bash session.
+This is the starting directory for the `vagrant` users's Bash session when SSH'ing in.
+
+This directory is shared with the host machine. Files may be edited from here using an IDE or text editor on the host machine.
+
+The Django project is available on the host machine at `localhost:8000` or `http://127.0.0.1:8000`.
 
 ## Default Django Application
 
