@@ -1,4 +1,4 @@
-This repository contains a Chef cookbook and bash script that will install all the tools we use to build Python webapps at Kinsa in a Vagrant virtual environment. It should help new developers to setup virtual boxes easily and get up to speed in no time.
+This repository contains directives to install all the tools we use to build Python webapps at Kinsa in a Vagrant virtual environment. It should help new developers to setup virtual boxes easily and get up to speed in no time.
 
 It should work well on a newer Apple Macintosh running OSX Mavericks.
 
@@ -8,9 +8,9 @@ This step only ever needs to be done once. Once the box is installed on a system
 
 On an Apple running OS X, download and install [Xcode from the Apple App Store](https://itunes.apple.com/us/app/xcode/id497799835?ls=1&mt=12). This is necessary to get some compilers and install Git on the host machine.
 
-Download VirtualBox from http://www.virtualbox.org/wiki/Downloads, install the package.
+Download [VirtualBox](http://www.virtualbox.org/wiki/Downloads) or [VMWare Fusion](http://www.vmware.com/products/fusion/) or [VMWare Fusion Professional](http://www.vmware.com/products/fusion-professional/), install the package.
 
-Download Vagrant 2 or higher from http://downloads.vagrantup.com/, install the package.
+[Download Vagrant 2](http://downloads.vagrantup.com/) or higher, install the package.
 
 Launch a Terminal window, check that it installed:
 
@@ -20,7 +20,11 @@ Install the [_vagrant-omnibus_ plugin](https://github.com/schisamo/vagrant-omnib
 
     (host) $ vagrant plugin install vagrant-omnibus
 
-Optionally, install the [_vagrant-vmware_ plugin](https://www.vagrantup.com/vmware) to use VMWare Fusion rather than VirtualBox. Click _Buy Now_ and follow the directions. The plugin requires VMWare Fusion or VMWare Fusion Professional separately. You will be prompted with directions to install the plugin and associate it with the license [during the installation](https://docs.vagrantup.com/v2/vmware/installation.html).
+Install the [_vagrant-berkshelf_ plugin](https://github.com/berkshelf/vagrant-berkshelf) to manage Chef cookbooks.
+
+    (host) $ vagrant plugin install vagrant-berkshelf --plugin-version '>= 2.0.1'
+
+Optionally, install the [_vagrant-vmware_ plugin](https://www.vagrantup.com/vmware) to use VMWare Fusion rather than VirtualBox. Click _Buy Now_ and follow the directions. The Vagrant VMWare plugin requires either VMWare Fusion or VMWare Fusion Professional. You will be prompted with directions to install the plugin and associate it with the license [during the installation](https://docs.vagrantup.com/v2/vmware/installation.html).
 
 Add a Vagrant box (we'll be using Ubuntu Trusty Tahr (14.04 LTS) 64-bit):
 
@@ -42,20 +46,6 @@ Download this repo.
     
     (host) $ curl -L https://github.com/Kinsa/kinsa-environment/tarball/master | tar -xz --strip-components=1
 
-Run the bootstrap script to download the Chef cookbooks.
-
-    (host) $ bash bootstrap.sh
-
----
-
-**WARNING**
-
-Currently, installation will fail when attempting to install Git and Python.
-
-Open the `metadata.rb` file in each of those cookbooks and remove or comment out the dependencies except for `build_essential` which is the only requirement for the Debian/Ubuntu operating system. The others maybe should be listed as `recommends` or there may be some other issue at hand. Not sure at this time.
-
----
-
 Startup Vagrant and provision the Virtual Machine.
 
     (host) $ vagrant up
@@ -68,15 +58,15 @@ SSH in to the Virtual Machine.
 
     (host) $ vagrant ssh 
 
-# A Note About SSH Keys
+## A Note About SSH Keys
 
 This project makes your [host machine's SSH key available on the virtual machine](http://docs.vagrantup.com/v2/vagrantfile/ssh_settings.html) so you can use the SSH keys from your host computer on your virtual machine to SSH in to GitHub, BitBucket or your server.
 
 For this to work you need to have working SSH private / public keys on your host computer. [GitHub has a tutorial deliniating the process of creating these keys.](https://help.github.com/articles/generating-ssh-keys)
 
-# Django
+## Django
 
-This project installs a new Django project from the template at [https://github.com/jbergantine/django-newproj-template](). There's a few things to do the first time through to get it all setup.
+The [kinsa-bootstrap](http://github.com/kinsa/kinsa-bootstrap) project installs a new Django project from the template at [https://github.com/jbergantine/django-newproj-template](). There's a few things to do the first time through to get it all setup.
 
 Sync the database and migrate any migrations.
 
@@ -95,103 +85,61 @@ Smoke test.
 
 Open a Web browser on your host workstation and navigate to [http://localhost:8000](). You should see the `home.html` template rendered.
 
----
+# Directory Structure and Subprojects
 
-# Cheat Sheets
+## Python
 
-## Vagrant command tips
+Python 2.7, VirtualEnv, and VirtualEnvWrapper are installed and configured. 
 
-### To exit the VM and return to your host machine:
+The Django Project is installed into a virtual environment named `djangoproj` which resides in `/home/vagrant/.virtualenvs`. The `djangoproj` virtual environment is activated by default for the `vagrant` user's Bash session.
 
-    (vm) $ exit
+Certain packages are installed globally and the `djangoproj` virtual environment is configured to have access to global packages.
 
-### To shutdown the VM:
+## Django Project
 
-    (host) $ vagrant halt
+The Django Project gets built into `/vagrant/myproject`.
 
-### To suspend the VM (i.e. freeze the VM's state):
+This is the starting directory for the `vagrant` users's Bash session.
 
-    (host) $ vagrant suspend
+## Default Django Application
 
-### Once shutdown or suspended, a VM can be restarted. To boot a VM:
+The defualt application is also called `myproject` and resides at `/vagrant/myproject/myproject`.
 
-    (host) $ vagrant up
+See the [Django Newproj Template README](https://github.com/jbergantine/django-newproj-template). for additional documentation of the default application including additional Python packages installed, settings file names and locations, default database engine, etc.
 
-### SSH into a VM (VM must [first be booted](#once-shutdown-or-suspended-a-vm-can-be-restarted)):
+## HTML
 
-    (host) $ vagrant ssh
+HTML Templates reside in `/vagrant/myproject/myproject/templates`.
 
-### To destroy the VM:
+[See the Django Newproj Template README for additional documentation of the included HTML templates.](https://github.com/jbergantine/django-newproj-template).
 
-    (host) $ vagrant destroy
+## Stylesheets
 
-### To check if the VM is currently running:
+SASS files reside in `/vagrant/myproject/myproject/static_media/stylesheets/sass` and get compiled via Compass to `/vagrant/myproject/myproject/static_media/stylesheets/stylesheets`.
 
-    (host) $ vagrant status
+[See the Gesso SASS project README for additional documentation.](https://github.com/jbergantine/compass-gesso).
 
-### To re-run the provisioning after the VM has been started (if you have built the VM from scratch):
+This project relies on Compass and Susy 1.x.
 
-    (host) $ vagrant provision
+* [Compass documentation](http://compass-style.org/reference/compass/).
+* [Susy One documentation](http://susydocs.oddbird.net/en/latest/susyone/).
 
-More information is available in the [Vagrant documentation](http://vagrantup.com/v1/docs/index.html).
+## Scripts
 
-## VirtualenvWrapper Command Tips
+JavaScript files reside in `/vagrant/myproject/myproject/static_media/javascripts`.
 
-Replacing `<virtualenv_name>` with the name of the virtual environement (IE: `djangoproj`).
+This project relies on the latest verison of jQuery and a customzied version of Modernizr 2.6.2 with just [HTML5 shims](http://modernizr.com/download/#-shiv-cssclasses-load).
 
-### To make a virtual environment:
+* [jQuery documentation](http://api.jquery.com).
+* [Modernizr documentation](http://modernizr.com/docs/).
 
-    (vm) $ mkvirtualenv <virtualenv_name>
+## Images
 
-### To activate a virtual environment:
+Images reside in `/vagrant/myproject/myproject/static_media/images`.
 
-    (vm) $ workon <virtualenv_name>
-   
-### To deactivate a virtual environment:
+# Working Collaboratively
 
-    (vm) $ deactivate
-
-### To remove a virtual environment (warning this will delete the environment and any files therein):
-
-    (vm) rmvirtualenv <virtualenv_name>
-
-## PIP Command Tips
-
-### List intalled packages
-
-    (vm) $ pip freeze
-
-The output of this command can be routed to a file as in:
-
-    (vm) $ pip freeze > <path_to_file>
-
-As in:
-
-    (vm) $ pip freeze > requirements.txt
-
-### Install a new package:
- 
-    (vm) $ pip install <package_name>
-
-### Upgrade a package that is alrady installed:
-
-    (vm) $ pip install <package_name> --upgrade
-
-### Install a specific version of a package (where x.x.x is the version number):
-
-    (vm) $ pip install <package_name>==x.x.x
-
-### Install all the packages listed in a file:
-
-    (vm) pip install -r <path_to_file>
-
-As in:
-
-    (vm) $ pip install -r requirements.txt
-
-### Uninstall a package:
-
-    (vm) $ pip uninstall <package_name>
+The project uses an undocumented post-merge Git hook [(view the source code)](https://github.com/Kinsa/kinsa-bootstrap/blob/develop/files/default/post-merge.sh) to compile SASS files, install Python package dependancies, sync/migrate databases and load database fixtures when working collaboratively.
 
 # Bash Aliases
 
@@ -222,13 +170,13 @@ The following bash aliases are added to the shell.
     <tr>
         <th>$ rs</th>
         <td>
-            <pre>python manage.py runserver [::]:8000</pre>
+            <pre>python manage.py runserver_plus [::]:8000</pre>
         </td>
     </tr>
     <tr>
         <th>$ sh</th>
         <td>
-            <pre>python manage.py shell</pre>
+            <pre>python manage.py shell_plus --bpython</pre>
         </td>
     </tr>
     <tr>
