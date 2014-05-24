@@ -6,6 +6,8 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.omnibus.chef_version = :latest
 
+  config.berkshelf.enabled = true
+
   config.ssh.private_key_path = ["~/.vagrant.d/insecure_private_key", "~/.ssh/id_rsa"]
   config.ssh.forward_agent = true
 
@@ -47,39 +49,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :chef_solo do |chef|
     chef.custom_config_path = "Vagrantfile.chef"
 
-    chef.cookbooks_path = "./my-recipes/cookbooks"
-
-    # compilers
-    chef.add_recipe "apt"
-    chef.add_recipe "build-essential"
-
-    chef.add_recipe "sudo"
- 
-    # openssl is a requirement for postgresql
-    chef.add_recipe "openssl"
-
-    # postgresql database server
-    chef.add_recipe "postgresql::server"
-
-    # git 
-    chef.add_recipe "git"
-    chef.add_recipe "gitflow"
-
-    # python, pip, and virtualenv
-    chef.add_recipe "python"
-
-    # zlib, libjpeg, and libfreetype are necessary for PIL
-    chef.add_recipe "zlib"
-    chef.add_recipe "libjpeg"
-    chef.add_recipe "libfreetype"
-
-    # rbenv, ruby, rubygems
-    chef.add_recipe "ruby_build"
-    chef.add_recipe "rbenv::system"
-    chef.add_recipe "rbenv::vagrant"
-
-    # tie it all together
-    chef.add_recipe "bootstrap"
+    chef.add_recipe "kinsa-bootstrap"
 
     chef.json = { 
       :authorization => {
