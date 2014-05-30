@@ -10,7 +10,7 @@ On an Apple running OS X, download and install [Xcode from the Apple App Store](
 
 Download [VirtualBox](http://www.virtualbox.org/wiki/Downloads) or [VMWare Fusion](http://www.vmware.com/products/fusion/) or [VMWare Fusion Professional](http://www.vmware.com/products/fusion-professional/), install the package.
 
-[Download Vagrant 2](http://downloads.vagrantup.com/) or higher, install the package.
+[Download Vagrant 1.6](http://downloads.vagrantup.com/) or higher, install the package.
 
 Launch a Terminal window, check that it installed:
 
