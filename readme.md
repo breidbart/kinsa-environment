@@ -14,49 +14,69 @@ Download [VirtualBox](http://www.virtualbox.org/wiki/Downloads) or [VMWare Fusio
 
 Launch a Terminal window, check that it installed:
 
+    ```bash
     (host) $ which vagrant
+    ```
 
 Install the [_vagrant-omnibus_ plugin](https://github.com/schisamo/vagrant-omnibus). This ensures the desired version of Chef is installed.
 
+    ```bash
     (host) $ vagrant plugin install vagrant-omnibus
+    ```
 
 Install the [_vagrant-berkshelf_ plugin](https://github.com/berkshelf/vagrant-berkshelf) to manage Chef cookbooks.
 
+    ```bash
     (host) $ vagrant plugin install vagrant-berkshelf --plugin-version '>= 2.0.1'
+    ```
 
 Optionally, install the [_vagrant-vmware_ plugin](https://www.vagrantup.com/vmware) to use VMWare Fusion rather than VirtualBox. Click _Buy Now_ and follow the directions. The Vagrant VMWare plugin requires either VMWare Fusion or VMWare Fusion Professional. You will be prompted with directions to install the plugin and associate it with the license [during the installation](https://docs.vagrantup.com/v2/vmware/installation.html).
 
 Add a Vagrant box (we'll be using Ubuntu Trusty Tahr (14.04 LTS) 64-bit):
 
+    ```bash
     (host) $ vagrant box add https://vagrantcloud.com/chef/ubuntu-14.04 
+    ```
 
 # Starting a New Project
 
 Make a directory for the project and change to it, replacing `<path_to>` with the path to the project and `<project_name>` with the name of the project.
 
+    ```bash
     (host) $ mkdir <path_to>/<project_name> && cd $_
+    ```
 
 For example, to create a project called 'webapp' in your home directory:
 
+    ```bash
     (host) $ mkdir ~/webapp && cd $_
+    ```
 
 When you're all done, this directory will match up with `/vagrant/` in the virtual environment. Vagrant keeps the two directories in sync so changes to one will be made in the other. 
 
 Download this repo.
     
+    ```bash
     (host) $ curl -L https://github.com/Kinsa/kinsa-environment/tarball/master | tar -xz --strip-components=1
+    ```
 
 Startup Vagrant and provision the Virtual Machine.
 
+    ```bash
     (host) $ vagrant up
+    ```
 
 If using with VMWare, throw the `--provider` flag.
 
+    ```bash
     (host) $ vagrant up --provider=vmware_fusion
+    ```
 
 SSH in to the Virtual Machine.
 
+    ```bash
     (host) $ vagrant ssh 
+    ```
 
 ## A Note About SSH Keys
 
@@ -70,16 +90,22 @@ The [kinsa-bootstrap](http://github.com/kinsa/kinsa-bootstrap) project installs 
 
 Sync the database and migrate any migrations.
 
+    ```bash
     (vm) $ dj syncdb
     (vm) $ dj migrate
+    ```
 
 Force compile the stylesheets.
 
+    ```bash
     (vm) $ compass compile myproject/static_media/stylesheets --force
+    ```
 
 Smoke test.
 
+    ```bash
     (vm) $ frs
+    ```
 
 `frs` is an alias to `foreman start -f Procfile.dev` which contains a directive to execute `python manage.py runserver [::]:8000` as well as `compass watch myproject/static_media/stylesheets`.
 
