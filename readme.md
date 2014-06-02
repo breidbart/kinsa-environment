@@ -88,7 +88,7 @@ For this to work you need to have working SSH private / public keys on your host
 
 The [kinsa-bootstrap](http://github.com/kinsa/kinsa-bootstrap) project installs a new Django project from the template at [https://github.com/jbergantine/django-newproj-template](). There's a few things to do the first time through to get it all setup.
 
-Sync the database and migrate any migrations.
+Sync and migrate the database.
 
 ```bash
 (vm) $ dj syncdb
