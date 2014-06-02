@@ -14,9 +14,9 @@ Download [VirtualBox](http://www.virtualbox.org/wiki/Downloads) or [VMWare Fusio
 
 Launch a Terminal window, check that it installed:
 
-    ```bash
-    (host) $ which vagrant
-    ```
+```bash
+(host) $ which vagrant
+```
 
 Install the [_vagrant-omnibus_ plugin](https://github.com/schisamo/vagrant-omnibus). This ensures the desired version of Chef is installed.
 
