@@ -84,6 +84,22 @@ This project makes your [host machine's SSH key available on the virtual machine
 
 For this to work you need to have working SSH private / public keys on your host computer. [GitHub has a tutorial deliniating the process of creating these keys.](https://help.github.com/articles/generating-ssh-keys)
 
+## The Bash Prompt
+
+This project uses a customized bash prompt which shows you the current user, active Python virtual environment and git branch with color coding.
+
+The ouptut format looks like this:
+
+```bash
+user python_virtual_environment_name git_branch path_from_root$
+```
+
+Specifically, it might look like this if the user is `vagrant`, the virtualenv is `djangoproj`, the active git branch is `develop` and the path is `/vagrant/myproject`:
+
+```bash
+vagrant djangoproj develop /vagrant/myproject$
+```
+
 ## Django
 
 The [kinsa-bootstrap](http://github.com/kinsa/kinsa-bootstrap) project installs a new Django project from the template at [https://github.com/jbergantine/django-newproj-template](). There's a few things to do the first time through to get it all setup.
