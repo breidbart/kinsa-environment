@@ -91,7 +91,7 @@ This project uses a customized bash prompt which shows you the current user, act
 The ouptut format looks like this:
 
 ```bash
-user python_virtual_environment_name git_branch path_from_root$
+<user> <python virtual environment name> <git branch> <path from root>$
 ```
 
 Specifically, it might look like this if the user is `vagrant`, the virtualenv is `djangoproj`, the active git branch is `develop` and the path is `/vagrant/myproject`:
