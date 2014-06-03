@@ -123,9 +123,17 @@ Smoke test.
 (vm) $ frs
 ```
 
-`frs` is an alias to `foreman start -f Procfile.dev` which contains a directive to execute `python manage.py runserver [::]:8000` as well as `compass watch myproject/static_media/stylesheets`.
+_`frs` is an alias to `foreman start -f Procfile.dev` which contains a directive to execute `python manage.py runserver [::]:8000` as well as `compass watch myproject/static_media/stylesheets`. This and other aliases are documented at the end of this document._
 
 Open a Web browser on your host workstation and navigate to [http://localhost:8000](). You should see the `home.html` template rendered.
+
+## Git Flow
+
+Init git flow with defaults.
+
+```bash
+(vm) $ git flow init -d
+```
 
 # Directory Structure and Subprojects
 
