@@ -138,7 +138,7 @@ git config --global user.email you@example.com
 
 ## Git Flow
 
-Init git flow with defaults.
+Init [git flow](https://github.com/nvie/gitflow) with defaults.
 
 ```bash
 (vm) $ git flow init -d
