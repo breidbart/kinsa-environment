@@ -127,6 +127,15 @@ _`frs` is an alias to `foreman start -f Procfile.dev` which contains a directive
 
 Open a Web browser on your host workstation and navigate to [http://localhost:8000](). You should see the `home.html` template rendered.
 
+## Git
+
+Set your user's name and email (replacing the filler content below with your details).
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email you@example.com
+```
+
 ## Git Flow
 
 Init git flow with defaults.
