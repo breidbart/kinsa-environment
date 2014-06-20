@@ -182,7 +182,7 @@ SASS files reside in `/vagrant/myproject/myproject/static_media/stylesheets/sass
 
 [See the Gesso SASS project README for additional documentation.](https://github.com/jbergantine/compass-gesso).
 
-This project forwards port 35729 from the virtual machine to the host machine which is the port LiveReload relies on. For this to be useful, Grunt must be installed and used to compile the stylesheets with the `livereload` option enabled. For more information see https://github.com/gruntjs/grunt-contrib-watch#optionslivereload and https://github.com/gruntjs/grunt-contrib-compass. 
+This project forwards port 35729 from the virtual machine to the host machine which is the port LiveReload relies on. For this to be useful, Grunt or Gulp must be installed and used to compile the stylesheets with the `livereload` option enabled. For more information on doing this with Grunt see https://github.com/gruntjs/grunt-contrib-watch#optionslivereload and https://github.com/gruntjs/grunt-contrib-compass. For more information on doing this with Gulp see http://www.smashingmagazine.com/2014/06/11/building-with-gulp/ and either https://www.npmjs.org/package/gulp-watch or https://github.com/vohof/gulp-livereload as well as https://github.com/appleboy/gulp-compass. 
 
 This project relies on Compass and Susy 1.x.
 
