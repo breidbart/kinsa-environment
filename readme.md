@@ -132,8 +132,8 @@ Open a Web browser on your host workstation and navigate to [http://localhost:80
 Set your user's name and email (replacing the filler content below with your details).
 
 ```bash
-git config --global user.name "Your Name"
-git config --global user.email you@example.com
+(vm) $ git config --global user.name "Your Name"
+(vm) $ git config --global user.email you@example.com
 ```
 
 ## Git Flow
