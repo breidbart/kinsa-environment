@@ -47,8 +47,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # (relative to this Vagrantfile), and adding some recipes and/or 
   # roles.
   config.vm.provision :chef_solo do |chef|
-	   # required directive, but ignored since we're using Berkshelf
-   	chef.cookbooks_path = "cookbooks"
+    # required directive, but ignored since we're using Berkshelf
+    chef.cookbooks_path = "cookbooks"
 
     chef.custom_config_path = "Vagrantfile.chef"
 
