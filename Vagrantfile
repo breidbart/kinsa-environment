@@ -27,6 +27,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # LiveReload listens on port 35729.
   # http://feedback.livereload.com/knowledgebase/articles/195869-how-to-change-the-port-number-livereload-listens-o
   config.vm.network "forwarded_port", guest: 35729, host: 35729
+  
+  # SMTP Ports
+  config.vm.network "forwarded_port", guest: 25, host: 25
+  config.vm.network "forwarded_port", guest: 465, host: 465
+  config.vm.network "forwarded_port", guest: 587, host: 587
 
   # Optionally, configure the box
   # VMWare
