@@ -269,7 +269,7 @@ The following bash aliases are added to the shell.
         <th>$ frs</th>
         <td>
             <pre>foreman start -f Procfile.dev</pre>
-            <p>Simutaniously starts <code>compass watch myproject/static_media/stylesheets</code> and <code>python manage.py runserver [::]:8000</code> so stylesheets can be compiled and the server run from the same SSH session without manually managing processes.</p>
+            <p>Simutaniously starts <code>compass watch myproject/static_media/stylesheets</code> and <code>python manage.py runserver [::]:8000</code> so stylesheets can be compiled and the server run from the same SSH session without manually managing processes. Once SASS support has been added to the environment (this happens by default when the static-media recipe gets added), <code>frs</code> also calls <code>compass compile myproject/static_media/stylesheets;</code> before running <code>watch</code> and <code>runserver</code> to force compile the stylesheets the first time.</p>
         </td>
     </tr>
 </table>
