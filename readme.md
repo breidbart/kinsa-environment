@@ -106,24 +106,20 @@ The [kinsa-bootstrap](http://github.com/kinsa/kinsa-bootstrap) project installs 
 
 Sync and migrate the database.
 
+_`dj`_ is an alias to `python manage.py` so you have to type less to interact with Django's management command.
+
 ```bash
 (vm) $ dj syncdb
 (vm) $ dj migrate
 ```
 
-Force compile the stylesheets.
-
-```bash
-(vm) $ compass compile myproject/static_media/stylesheets --force
-```
-
 Smoke test.
+
+_`frs` is an alias to `foreman start -f Procfile.dev` which contains a directive to execute `python manage.py runserver [::]:8000` as well as `compass watch myproject/static_media/stylesheets`. This and other aliases are documented at the end of this document._
 
 ```bash
 (vm) $ frs
 ```
-
-_`frs` is an alias to `foreman start -f Procfile.dev` which contains a directive to execute `python manage.py runserver [::]:8000` as well as `compass watch myproject/static_media/stylesheets`. This and other aliases are documented at the end of this document._
 
 Open a Web browser on your host workstation and navigate to [http://localhost:8000](). You should see the `home.html` template rendered.
 
@@ -205,6 +201,31 @@ Images reside in `/vagrant/myproject/myproject/static_media/images`.
 # Working Collaboratively
 
 The project uses an undocumented post-merge Git hook [(view the source code)](https://github.com/Kinsa/kinsa-bootstrap/blob/develop/files/default/post-merge.sh) to compile SASS files, install Python package dependancies, sync/migrate databases and load database fixtures when working collaboratively.
+
+# Database Access
+
+<table>
+    <tr>
+        <th>database name</th>
+        <td>django_db</td>
+    </tr>
+    <tr>
+        <th>database user</th>
+        <td>django_login</td>
+    </tr>
+    <tr>
+        <th>database password</th>
+        <td>secret</td>
+    </tr>
+    <tr>
+        <th>database host</th>
+        <td>127.0.0.1</td>
+    </tr>
+    <tr>
+        <th>database port</th>
+        <td>5432</td>
+    </tr>
+</table>
 
 # Bash Aliases
 
