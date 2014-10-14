@@ -90,9 +90,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
               :name => 'foreman'
             },
             {
-              :name => 'berkshelf'
-            },
-            {
               :name => 'bundler'
             }
           ]
