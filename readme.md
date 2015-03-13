@@ -60,13 +60,9 @@ Download this repo.
 (host) $ curl -L https://github.com/Kinsa/kinsa-environment/tarball/master | tar -xz --strip-components=1
 ```
 
-Startup Vagrant and provision the Virtual Machine.
+Edit the Vagrantfile as necessary. For example, to allocate additional resources to the machine or install only specifc parts of the _kinsa-bootstrap_ project.
 
-```bash
-(host) $ vagrant up
-```
-
-If using with VMWare, throw the `--provider` flag.
+Startup Vagrant and provision the Virtual Machine. If using with VMWare, specify such with the `--provider` flag, otherwise this can be omitted.
 
 ```bash
 (host) $ vagrant up --provider=vmware_fusion
