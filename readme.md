@@ -10,73 +10,51 @@ On an Apple running OS X, download and install [Xcode from the Apple App Store](
 
 Download [VirtualBox](http://www.virtualbox.org/wiki/Downloads) or [VMWare Fusion](http://www.vmware.com/products/fusion/) or [VMWare Fusion Professional](http://www.vmware.com/products/fusion-professional/), install the package.
 
-[Download Vagrant 1.6](http://downloads.vagrantup.com/) or higher, install the package.
+[Download Vagrant 2](http://downloads.vagrantup.com/) or higher, install the package.
 
 Launch a Terminal window, check that it installed:
 
-```bash
-(host) $ which vagrant
-```
+    (host) $ which vagrant
 
 Install the [_vagrant-omnibus_ plugin](https://github.com/schisamo/vagrant-omnibus). This ensures the desired version of Chef is installed.
 
-```bash
-(host) $ vagrant plugin install vagrant-omnibus
-```
+    (host) $ vagrant plugin install vagrant-omnibus
 
 Install the [_vagrant-berkshelf_ plugin](https://github.com/berkshelf/vagrant-berkshelf) to manage Chef cookbooks.
 
-```bash
-(host) $ vagrant plugin install vagrant-berkshelf --plugin-version '>= 2.0.1'
-```
+    (host) $ vagrant plugin install vagrant-berkshelf --plugin-version '>= 2.0.1'
 
 Optionally, install the [_vagrant-vmware_ plugin](https://www.vagrantup.com/vmware) to use VMWare Fusion rather than VirtualBox. Click _Buy Now_ and follow the directions. The Vagrant VMWare plugin requires either VMWare Fusion or VMWare Fusion Professional. You will be prompted with directions to install the plugin and associate it with the license [during the installation](https://docs.vagrantup.com/v2/vmware/installation.html).
 
 Add a Vagrant box (we'll be using Ubuntu Trusty Tahr (14.04 LTS) 64-bit):
 
-```bash
-(host) $ vagrant box add https://vagrantcloud.com/chef/ubuntu-14.04 
-```
+    (host) $ vagrant box add https://vagrantcloud.com/chef/ubuntu-14.04 
 
 # Starting a New Project
 
 Make a directory for the project and change to it, replacing `<path_to>` with the path to the project and `<project_name>` with the name of the project.
 
-```bash
-(host) $ mkdir <path_to>/<project_name> && cd $_
-```
+    (host) $ mkdir <path_to>/<project_name> && cd $_
 
 For example, to create a project called 'webapp' in your home directory:
 
-```bash
-(host) $ mkdir ~/webapp && cd $_
-```
+    (host) $ mkdir ~/webapp && cd $_
 
 When you're all done, this directory will match up with `/vagrant/` in the virtual environment. Vagrant keeps the two directories in sync so changes to one will be made in the other. 
 
 Download this repo.
     
-```bash
-(host) $ curl -L https://github.com/Kinsa/kinsa-environment/tarball/master | tar -xz --strip-components=1
-```
+    (host) $ curl -L https://github.com/Kinsa/kinsa-environment/tarball/master | tar -xz --strip-components=1
 
-Startup Vagrant and provision the Virtual Machine.
+Edit the Vagrantfile as necessary. For example, to allocate additional resources to the machine or install only specifc parts of the _kinsa-bootstrap_ project.
 
-```bash
-(host) $ vagrant up
-```
+Startup Vagrant and provision the Virtual Machine. If using with VMWare, specify such with the `--provider` flag, otherwise this can be omitted.
 
-If using with VMWare, throw the `--provider` flag.
-
-```bash
-(host) $ vagrant up --provider=vmware_fusion
-```
+    (host) $ vagrant up --provider=vmware_fusion
 
 SSH in to the Virtual Machine.
 
-```bash
-(host) $ vagrant ssh 
-```
+    (host) $ vagrant ssh 
 
 ## A Note About SSH Keys
 
@@ -84,61 +62,26 @@ This project makes your [host machine's SSH key available on the virtual machine
 
 For this to work you need to have working SSH private / public keys on your host computer. [GitHub has a tutorial deliniating the process of creating these keys.](https://help.github.com/articles/generating-ssh-keys)
 
-## The Bash Prompt
-
-This project uses a customized bash prompt which shows you the current user, active Python virtual environment and git branch with color coding.
-
-The ouptut format looks like this:
-
-```bash
-<user> <python virtual environment name> <git branch> <path from root>$
-```
-
-Specifically, it might look like this if the user is `vagrant`, the virtualenv is `djangoproj`, the active git branch is `develop` and the path is `/vagrant/myproject`:
-
-```bash
-vagrant djangoproj develop /vagrant/myproject$
-```
-
 ## Django
 
-The [kinsa-bootstrap](http://github.com/kinsa/kinsa-bootstrap) project installs a new Django project from the template at [https://github.com/jbergantine/django-newproj-template](). There's a few things to do the first time through to get it all setup.
+The [kinsa-bootstrap](http://github.com/kinsa/kinsa-bootstrap) project installs a new Django project from the template at [https://github.com/jbergantine/django-newproj-template](https://github.com/jbergantine/django-newproj-template). There's a few things to do the first time through to get it all setup.
 
-Sync and migrate the database.
+Sync the database and migrate any migrations.
 
-_`dj`_ is an alias to `python manage.py` so you have to type less to interact with Django's management command.
+    (vm) $ dj syncdb
+    (vm) $ dj migrate
 
-```bash
-(vm) $ dj syncdb
-(vm) $ dj migrate
-```
+Force compile the stylesheets.
+
+    (vm) $ compass compile myproject/static_media/stylesheets --force
 
 Smoke test.
 
-_`frs` is an alias to `foreman start -f Procfile.dev` which contains a directive to execute `python manage.py runserver [::]:8000` as well as `compass watch myproject/static_media/stylesheets`. This and other aliases are documented at the end of this document._
+    (vm) $ frs
 
-```bash
-(vm) $ frs
-```
+`frs` is an alias to `foreman start -f Procfile.dev` which contains a directive to execute `python manage.py runserver [::]:8000` as well as `compass watch myproject/static_media/stylesheets`.
 
 Open a Web browser on your host workstation and navigate to [http://localhost:8000](). You should see the `home.html` template rendered.
-
-## Git
-
-Set your user's name and email (replacing the filler content below with your details).
-
-```bash
-(vm) $ git config --global user.name "Your Name"
-(vm) $ git config --global user.email you@example.com
-```
-
-## Git Flow
-
-Init [git flow](https://github.com/nvie/gitflow) with defaults.
-
-```bash
-(vm) $ git flow init -d
-```
 
 # Directory Structure and Subprojects
 
@@ -148,17 +91,13 @@ Python 2.7, VirtualEnv, and VirtualEnvWrapper are installed and configured.
 
 The Django Project is installed into a virtual environment named `djangoproj` which resides in `/home/vagrant/.virtualenvs`. The `djangoproj` virtual environment is activated by default for the `vagrant` user's Bash session.
 
-Certain packages are installed globally, and the `djangoproj` virtual environment is configured to have access to global packages.
+Certain packages are installed globally and the `djangoproj` virtual environment is configured to have access to global packages.
 
 ## Django Project
 
 The Django Project gets built into `/vagrant/myproject`.
 
-This is the starting directory for the `vagrant` users's Bash session when SSH'ing in.
-
-This directory is shared with the host machine. Files may be edited from here using an IDE or text editor on the host machine.
-
-The Django project is available on the host machine at `localhost:8000` or `http://127.0.0.1:8000`.
+This is the starting directory for the `vagrant` users's Bash session.
 
 ## Default Django Application
 
@@ -177,8 +116,6 @@ HTML Templates reside in `/vagrant/myproject/myproject/templates`.
 SASS files reside in `/vagrant/myproject/myproject/static_media/stylesheets/sass` and get compiled via Compass to `/vagrant/myproject/myproject/static_media/stylesheets/stylesheets`.
 
 [See the Gesso SASS project README for additional documentation.](https://github.com/jbergantine/compass-gesso).
-
-This project forwards port 35729 from the virtual machine to the host machine which is the port LiveReload relies on. For this to be useful, Grunt or Gulp must be installed and used to compile the stylesheets with the `livereload` option enabled. For more information on doing this with Grunt see https://github.com/gruntjs/grunt-contrib-watch#optionslivereload and https://github.com/gruntjs/grunt-contrib-compass. For more information on doing this with Gulp see http://www.smashingmagazine.com/2014/06/11/building-with-gulp/ and either https://www.npmjs.org/package/gulp-watch or https://github.com/vohof/gulp-livereload as well as https://github.com/appleboy/gulp-compass. 
 
 This project relies on Compass and Susy 1.x.
 
@@ -201,31 +138,6 @@ Images reside in `/vagrant/myproject/myproject/static_media/images`.
 # Working Collaboratively
 
 The project uses an undocumented post-merge Git hook [(view the source code)](https://github.com/Kinsa/kinsa-bootstrap/blob/develop/files/default/post-merge.sh) to compile SASS files, install Python package dependancies, sync/migrate databases and load database fixtures when working collaboratively.
-
-# Database Access
-
-<table>
-    <tr>
-        <th>database name</th>
-        <td>django_db</td>
-    </tr>
-    <tr>
-        <th>database user</th>
-        <td>django_login</td>
-    </tr>
-    <tr>
-        <th>database password</th>
-        <td>secret</td>
-    </tr>
-    <tr>
-        <th>database host</th>
-        <td>127.0.0.1</td>
-    </tr>
-    <tr>
-        <th>database port</th>
-        <td>5432</td>
-    </tr>
-</table>
 
 # Bash Aliases
 
@@ -269,7 +181,7 @@ The following bash aliases are added to the shell.
         <th>$ frs</th>
         <td>
             <pre>foreman start -f Procfile.dev</pre>
-            <p>Simutaniously starts <code>compass watch myproject/static_media/stylesheets</code> and <code>python manage.py runserver [::]:8000</code> so stylesheets can be compiled and the server run from the same SSH session without manually managing processes. Once SASS support has been added to the environment (this happens by default when the static-media recipe gets added), <code>frs</code> also calls <code>compass compile myproject/static_media/stylesheets;</code> before running <code>watch</code> and <code>runserver</code> to force compile the stylesheets the first time.</p>
+            <p>Simutaniously starts <code>compass watch myproject/static_media/stylesheets</code> and <code>python manage.py runserver [::]:8000</code> so stylesheets can be compiled and the server run from the same SSH session without manually managing processes.</p>
         </td>
     </tr>
 </table>
