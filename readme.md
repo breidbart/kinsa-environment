@@ -50,7 +50,9 @@ Edit the Vagrantfile as necessary. For example, to allocate additional resources
 
 Startup Vagrant and provision the Virtual Machine. If using with VMWare, specify such with the `--provider` flag, otherwise this can be omitted.
 
-    (host) $ vagrant up --provider=vmware_fusion
+```bash
+(host) $ vagrant up --provider=vmware_fusion
+```
 
 SSH in to the Virtual Machine.
 
