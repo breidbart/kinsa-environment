@@ -27,6 +27,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # LiveReload listens on port 35729.
   # http://feedback.livereload.com/knowledgebase/articles/195869-how-to-change-the-port-number-livereload-listens-o
   config.vm.network "forwarded_port", guest: 35729, host: 35729
+  
+  # SMTP Ports
+  config.vm.network "forwarded_port", guest: 25, host: 25
+  config.vm.network "forwarded_port", guest: 465, host: 465
+  config.vm.network "forwarded_port", guest: 587, host: 587
 
   # Optionally, configure the box
   # VMWare
@@ -47,6 +52,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # (relative to this Vagrantfile), and adding some recipes and/or 
   # roles.
   config.vm.provision :chef_solo do |chef|
+    # required directive, but ignored since we're using Berkshelf
+    chef.cookbooks_path = "cookbooks"
+
     chef.custom_config_path = "Vagrantfile.chef"
 
     chef.add_recipe "kinsa-bootstrap"
@@ -80,6 +88,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             },
             {
               :name => 'foreman'
+            },
+            {
+              :name => 'bundler'
             }
           ]
         }

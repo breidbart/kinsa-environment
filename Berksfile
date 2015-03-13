@@ -1,4 +1,4 @@
-site :opscode
+source "https://api.berkshelf.com"
 
 cookbook "kinsa-bootstrap", github: "Kinsa/kinsa-bootstrap"
 cookbook "gitflow", github: "jbergantine/gitflow"

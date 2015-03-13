@@ -46,13 +46,13 @@ Download this repo.
     
     (host) $ curl -L https://github.com/Kinsa/kinsa-environment/tarball/master | tar -xz --strip-components=1
 
-Startup Vagrant and provision the Virtual Machine.
+Edit the Vagrantfile as necessary. For example, to allocate additional resources to the machine or install only specifc parts of the _kinsa-bootstrap_ project.
 
-    (host) $ vagrant up
+Startup Vagrant and provision the Virtual Machine. If using with VMWare, specify such with the `--provider` flag, otherwise this can be omitted.
 
-If using with VMWare, throw the `--provider` flag.
-
-    (host) $ vagrant up --provider=vmware_fusion
+```bash
+(host) $ vagrant up --provider=vmware_fusion
+```
 
 SSH in to the Virtual Machine.
 
@@ -66,7 +66,7 @@ For this to work you need to have working SSH private / public keys on your host
 
 ## Django
 
-The [kinsa-bootstrap](http://github.com/kinsa/kinsa-bootstrap) project installs a new Django project from the template at [https://github.com/jbergantine/django-newproj-template](). There's a few things to do the first time through to get it all setup.
+The [kinsa-bootstrap](http://github.com/kinsa/kinsa-bootstrap) project installs a new Django project from the template at [https://github.com/jbergantine/django-newproj-template](https://github.com/jbergantine/django-newproj-template). There's a few things to do the first time through to get it all setup.
 
 Sync the database and migrate any migrations.
 
